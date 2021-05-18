@@ -41,10 +41,10 @@ import RoomCard from 'components/RoomCard/RoomCard'
 export default function(props) {
     console.log('Cookie', props.cookie)
     return (
-        <p>Cookie: {props.cookie}</p>
+        <p>Cookie</p>
     )
 }
 
 export function getServerSideProps(context) {
-    return {props: {cookie: context.req.headers.cookie}}
+    return {props: {cookie: context}}
 }
