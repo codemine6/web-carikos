@@ -39,8 +39,9 @@ import RoomCard from 'components/RoomCard/RoomCard'
 
 
 export default function(props) {
+    console.log('Cookie', props.cookie)
     return (
-        <p>{props.cookie}</p>
+        <p>Cookie: {props.cookie}</p>
     )
 }
 
