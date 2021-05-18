@@ -6,33 +6,44 @@ import Head from 'next/head'
 import Navbar from 'components/Navbar/Navbar'
 import RoomCard from 'components/RoomCard/RoomCard'
 
-export default function Favorites({rooms}) {
+// export default function Favorites({rooms}) {
+//     return (
+//         <>
+//             <Head>
+//                 <title>Favorites</title>
+//             </Head>
+//             <main>
+//                 <Navbar/>
+//                 <div className={styles.container}>
+//                     <h1>Kost favorite kamu</h1>
+//                     <div className={styles.list}>
+//                         {rooms?.map((room, i) => (
+//                             <RoomCard room={room} key={i}/>
+//                         ))}
+//                     </div>
+//                 </div>
+//             </main>
+//         </>
+//     )
+// }
+
+// export const getServerSideProps = withCustomerAuth(async context => {
+//     try {
+//         const cookie = context.req.headers.cookie
+//         const res = await API.get('rooms/favorite', {headers: {cookie}})
+//         return {props: {rooms: res.data.data}}
+//     } catch {
+//         return {notFound: true}
+//     }
+// })
+
+
+export default function(props) {
     return (
-        <>
-            <Head>
-                <title>Favorites</title>
-            </Head>
-            <main>
-                <Navbar/>
-                <div className={styles.container}>
-                    <h1>Kost favorite kamu</h1>
-                    <div className={styles.list}>
-                        {rooms?.map((room, i) => (
-                            <RoomCard room={room} key={i}/>
-                        ))}
-                    </div>
-                </div>
-            </main>
-        </>
+        <p>{props.cookie}</p>
     )
 }
 
-export const getServerSideProps = withCustomerAuth(async context => {
-    try {
-        const cookie = context.req.headers.cookie
-        const res = await API.get('rooms/favorite', {headers: {cookie}})
-        return {props: {rooms: res.data.data}}
-    } catch {
-        return {notFound: true}
-    }
-})
+export function getServerSideProps(context) {
+    return {props: {cookie: context.req.headers.cookie}}
+}
