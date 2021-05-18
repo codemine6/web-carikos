@@ -38,7 +38,7 @@ import RoomCard from 'components/RoomCard/RoomCard'
 // })
 
 
-export default function(props) {
+export default function Favorites(props) {
     console.log('Cookie', props.cookie)
     return (
         <p>Cookie</p>
@@ -46,5 +46,5 @@ export default function(props) {
 }
 
 export function getServerSideProps(context) {
-    return {props: {cookie: context}}
+    return {props: {cookie: context.req.headers.cookie}}
 }
