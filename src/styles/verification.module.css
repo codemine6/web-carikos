@@ -1,0 +1,15 @@
+.container {
+    padding: 4.5rem 2rem 2rem;
+}
+.container h3 {
+    font-size: 1.3rem;
+}
+.desc {
+    color: var(--dark);
+    margin: 1.5rem 0 3rem;
+}
+.error {
+    color: var(--red);
+    font-size: .75rem;
+    margin: 1rem;
+}

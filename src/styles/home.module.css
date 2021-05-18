@@ -1,0 +1,118 @@
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 1.3rem;
+}
+.title h2 {
+    font-size: 1.2rem;
+}
+.title a {
+    color: var(--blue);
+    font-size: .9rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.promo {
+    height: 13rem;
+    background: var(--white);
+    position: relative;
+    padding: .7rem 1.3rem 0;
+    margin-top: 3.5rem;
+}
+.promo > div {
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+/* Add */
+.add {
+    background: var(--blue);
+    border-radius: .5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .5rem .5rem .5rem 1rem;
+    margin: 0 1.3rem 1rem;
+}
+.add p {
+    color: var(--white);
+    font-size: .8rem;
+    font-weight: bold;
+}
+.add button {
+    color: var(--white);
+    font-size: .8rem;
+    background: var(--green);
+    border: .1rem solid var(--white);
+    border-radius: .5rem;
+    padding: .5rem;
+    cursor: pointer;
+}
+
+/* List */
+.list {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 1rem 0;
+}
+.list > div {
+    width: calc(50% - 1.65rem);
+    display: inline-block;
+    margin: 0 .5rem;
+}
+.list > div:first-child {
+    margin-left: 1.3rem;
+}
+.list > div:last-child {
+    margin-right: 1.3rem;
+}
+.list::-webkit-scrollbar {
+    display: none;
+}
+
+/* Cities */
+.cities {
+    display: flex;
+    margin: 0 1.3rem;
+}
+.cities > div {
+    position: relative;
+    cursor: pointer;
+}
+.cities span {
+    color: var(--blue);
+    font-weight: bold;
+    margin: 0 .5rem;
+}
+.cities i {
+    width: .8rem;
+    fill: var(--blue);
+    position: absolute;
+}
+.empty {
+    color: var(--dark);
+    font-size: .8rem;
+    font-style: italic;
+    text-align: center;
+    padding: 3rem;
+}
+
+/* List */
+.cityList {
+    height: 14rem;
+    top: 1.6rem;
+    background: var(--white);
+    border-radius: .5rem;
+    box-shadow: 0 0 .5rem var(--shadow);
+    position: absolute;
+    overflow-y: auto;
+    z-index: 1;
+}
+.cityList p {
+    color: var(--dark);
+    font-size: .9rem;
+    white-space: nowrap;
+    margin: .7rem 1rem;
+}

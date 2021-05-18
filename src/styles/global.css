@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
+
+:root {
+    --red: #eb5757;
+    --light-red: #ffc4c4;
+    --green: #35cb74;
+    --light-green: #a2e7bb;
+    --blue: #6490fa;
+    --light-blue: #e1e8ff;
+    --orange: #e7ae79;
+    --light-orange: #fff4eb;
+    --yellow: #fab700;
+    --pink: #e361ba;
+
+    --white: #fff;
+    --light: #eee;
+    --light-grey: #ccc;
+    --grey: #bbb;
+    --dark: #888;
+    --shadow: #0002;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background: #eee;
+}
+main {
+    min-height: 100vh;
+    max-width: 25rem;
+    background: #fff;
+    position: relative;
+    margin: auto;
+}
+
+/* Leaflet */
+.leaflet-container {
+    width: 100%;
+    height: 100%;
+}
+.leaflet-pane {
+    z-index: 0;
+}
+.leaflet-tile {
+    filter: hue-rotate(20deg);
+}
+.leaflet-control-attribution, .leaflet-routing-alternatives-container {
+    display: none;
+}
+.leaflet-control {
+    margin: 5rem 0 1rem 1rem !important;
+}
+.leaflet-popup-content {
+    margin: 0;
+}
+
+/* Remove Default Style */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+/* Shimmer */
+#shimmer {
+    position: relative;
+    overflow: hidden;
+}
+#shimmer::before {
+    content: '';
+    width: .5rem;
+    height: 100%;
+    top: 0;
+    background: #fff5;
+    box-shadow: 0 0 1rem 1rem #fff5;
+    position: absolute;
+    animation: loading 3s infinite;
+    z-index: 1;
+}
+
+@keyframes loading {
+    0% {
+        transform: skewX(-20deg) translateX(-15rem);
+    }
+    50% {
+        transform: skewX(-20deg) translateX(15rem);
+    }
+    100% {
+        transform: skewX(-20deg) translateX(30rem);
+    }
+}

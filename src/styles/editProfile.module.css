@@ -1,0 +1,84 @@
+/* Photo */
+.photo {
+    text-align: center;
+    margin: 4rem 2rem 1.5rem;
+}
+.photo img {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.photo label {
+    color: var(--blue);
+    display: flex;
+    justify-content: center;
+    margin-top: .5rem;
+    cursor: pointer;
+}
+.photo svg {
+    width: 1rem;
+    fill: var(--blue);
+    margin-right: .5rem;
+}
+.photo input {
+    display: none;
+}
+
+/* Form */
+.form {
+    margin: 0 2rem;
+}
+.form label, .city label {
+    color: var(--dark);
+    font-size: .8rem;
+    display: block;
+    margin-top: 1rem;
+}
+.form input, .city input {
+    width: 100%;
+    font-size: 1rem;
+    font-family: inherit;
+    border: none;
+    border-bottom: .1rem solid var(--light);
+    outline: none;
+    padding: .5rem .8rem;
+}
+.form input:focus, .city input:focus {
+    border-bottom: .1rem solid var(--blue);
+}
+
+/* City */
+.city {
+    position: relative;
+    margin: 0 2rem;
+}
+.error {
+    color: var(--red);
+    font-size: .75rem;
+    margin: 1rem 2rem 0;
+}
+
+/* List */
+.list {
+    width: 100%;
+    max-height: 14rem;
+    top: 4.1rem;
+    background: var(--white);
+    border: .1rem solid var(--grey);
+    border-radius: .5rem;
+    box-shadow: 0 0 .5rem var(--shadow);
+    position: absolute;
+    overflow-y: auto;
+    z-index: 1;
+}
+.list p {
+    color: var(--dark);
+    font-size: .9rem;
+    margin: .7rem 1rem;
+    cursor: pointer;
+}
+
+#save {
+    margin: 1.5rem 2rem;
+}

@@ -1,0 +1,42 @@
+/* Images */
+.images {
+    width: 100%;
+    height: 15rem;
+    top: 0;
+    position: sticky;
+}
+
+/* Detail */
+.detail {
+    background: var(--white);
+    border-radius: 1.3rem 1.3rem 0 0;
+    position: relative;
+    padding: 1.5rem 1.5rem 4.5rem;
+    z-index: 1;
+}
+
+/* Description */
+.description p {
+    line-height: 1.3rem;
+    font-size: .9rem;
+    white-space: pre-line;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin: 1rem 0 .5rem;
+}
+.description span {
+    color: var(--blue);
+    font-size: .8rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+.showAll {
+    display: block !important;
+}
+
+/* Owner */
+.owner {
+    margin: 1rem 0;
+}

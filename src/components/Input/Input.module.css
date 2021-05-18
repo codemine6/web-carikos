@@ -1,0 +1,43 @@
+.input {
+    position: relative;
+    margin: 2rem 0;
+}
+.input label {
+    top: .5rem;
+    left: .5rem;
+    color: var(--grey);
+    position: absolute;
+    pointer-events: none;
+    transition: .2s;
+}
+#active label {
+    color: var(--dark);
+    font-size: .75rem;
+    transform: translate(-.5rem, -1.4rem);
+}
+#active input {
+    border-bottom: .1rem solid var(--blue);
+}
+.input input {
+    width: 100%;
+    color: var(--dark);
+    font-size: 1rem;
+    font-family: inherit;
+    background: transparent;
+    border: none;
+    border-bottom: .1rem solid var(--light-grey);
+    outline: none;
+    padding: .6rem 2rem .6rem 1rem;
+    transition: .2s;
+}
+.invalid {
+    border-bottom: .1rem solid var(--red) !important;
+}
+.input i {
+    width: 1rem;
+    top: .8rem;
+    right: .8rem;
+    fill: var(--grey);
+    position: absolute;
+    cursor: pointer;
+}

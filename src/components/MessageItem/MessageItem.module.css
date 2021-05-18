@@ -1,0 +1,41 @@
+.myMessage {
+    width: fit-content;
+    max-width: 80%;
+    text-align: right;
+    word-wrap: break-word;
+    background: var(--light-blue);
+    border-radius: 1rem 0 1rem 1rem;
+    padding: .6rem 1rem;
+    margin: 1rem 0 1rem auto;
+}
+.otherMessage {
+    width: fit-content;
+    max-width: 80%;
+    word-wrap: break-word;
+    background: var(--white);
+    border-radius: 0 1rem 1rem 1rem;
+    padding: .6rem 1rem;
+    margin: 1rem 0;
+}
+.myMessage p, .otherMessage p {
+    color: var(--black);
+    text-align: left;
+    white-space: pre-line;
+    margin-bottom: .3rem;
+}
+.myMessage div {
+    display: flex;
+    justify-content: flex-end;
+}
+.myMessage span, .otherMessage span {
+    color: var(--grey);
+    font-size: .75rem;
+}
+.myMessage i {
+    width: .9rem;
+    fill: var(--blue);
+    margin: -.1rem .2rem 0 0;
+}
+.send {
+    fill: var(--grey) !important;
+}

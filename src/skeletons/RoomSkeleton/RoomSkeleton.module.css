@@ -1,0 +1,44 @@
+.card {
+    border-radius: .5rem;
+    box-shadow: 0 0 .7rem var(--shadow);
+    overflow: hidden;
+    position: relative;
+}
+.image {
+    height: 8rem;
+    background: var(--light);
+    display: flex;
+    justify-content: center;
+}
+.image svg {
+    width: 4rem;
+    fill: var(--white);
+}
+.type {
+    width: 25%;
+    height: 1.2rem;
+    background: var(--light);
+    border-radius: .3rem;
+    margin: .5rem;
+}
+.name {
+    width: 60%;
+    height: 1rem;
+    background: var(--light);
+    border-radius: .3rem;
+    margin: .5rem;
+}
+.city {
+    width: 35%;
+    height: .9rem;
+    background: var(--light);
+    border-radius: .3rem;
+    margin: .5rem;
+}
+.price {
+    width: 60%;
+    height: .9rem;
+    background: var(--light);
+    border-radius: .3rem;
+    margin: .7rem .5rem .5rem auto;
+}

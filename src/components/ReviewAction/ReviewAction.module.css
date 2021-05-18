@@ -1,0 +1,66 @@
+.review {
+    border-radius: .5rem;
+    box-shadow: 0 0 .5rem var(--shadow);
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+/* Room */
+.room {
+    display: flex;
+    margin-bottom: 1rem;
+}
+.room img {
+    width: 4rem;
+    height: 3rem;
+    margin-right: 1rem;
+}
+.location {
+    display: flex;
+    align-items: center;
+    margin-top: .2rem;
+}
+.location svg {
+    width: 1.2rem;
+    fill: var(--blue);
+    margin-right: .5rem;
+}
+.location p {
+    font-size: .8rem;
+    font-weight: bold;
+}
+
+.from {
+    font-size: .8rem;
+}
+.time {
+    color: var(--grey);
+    font-size: .75rem;
+}
+.message {
+    color: var(--dark);
+    font-size: .8rem;
+    margin: .8rem 0;
+}
+
+#replyBtn {
+    color: var(--blue);
+    background: none;
+    border: none;
+    outline: none;
+    display: flex;
+    margin: 0 0 0 auto;
+    cursor: pointer;
+}
+
+/* Form */
+.form textarea {
+    width: 100%;
+    font-family: inherit;
+    border: .1rem solid var(--light);
+    border-radius: .5rem;
+    outline: none;
+    resize: none;
+    padding: .7rem;
+    margin: .5rem 0;
+}

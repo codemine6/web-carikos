@@ -1,0 +1,26 @@
+.menus {
+    display: flex;
+    overflow-x: auto;
+    margin: 1.3rem;
+}
+.menus button {
+    color: var(--grey);
+    font-size: .75rem;
+    font-weight: bold;
+    font-family: inherit;
+    background: var(--white);
+    border: .1rem solid var(--light-grey);
+    border-radius: 1rem;
+    outline: none;
+    padding: .6rem .9rem;
+    margin-right: .5rem;
+    cursor: pointer;
+}
+.selected {
+    color: var(--white) !important;
+    background: var(--blue) !important;
+    border: .1rem solid var(--blue) !important;
+}
+.menus::-webkit-scrollbar {
+    display: none;
+}

@@ -1,0 +1,22 @@
+.form {
+    position: relative;
+    margin: 1.3rem;
+}
+.form input {
+    width: 100%;
+    font-size: 1rem;
+    font-family: inherit;
+    background: var(--light);
+    border: .1rem solid var(--light);
+    border-radius: 1rem;
+    outline: none;
+    padding: .7rem 3rem .7rem 1rem;
+}
+.form i {
+    width: 1.4rem;
+    top: .8rem;
+    right: .8rem;
+    fill: var(--grey);
+    position: absolute;
+    cursor: pointer;
+}

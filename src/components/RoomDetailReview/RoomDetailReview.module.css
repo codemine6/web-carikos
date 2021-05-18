@@ -1,0 +1,21 @@
+.review {
+    margin: 1.5rem 0;
+}
+.count {
+    color: var(--dark);
+    font-size: .8rem;
+    margin-top: .3rem;
+}
+.review p {
+    font-size: .8rem;
+    margin-bottom: .5rem;
+}
+.review button {
+    color: var(--blue);
+    font-weight: bold;
+    font-family: inherit;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}

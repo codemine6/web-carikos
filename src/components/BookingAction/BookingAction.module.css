@@ -1,0 +1,26 @@
+/* Action */
+.action {
+    margin-top: 1.5rem;
+}
+.action button {
+    width: 100%;
+    display: block;
+    margin-top: .8rem;
+    padding: .8rem;
+}
+#cancel {
+    color: var(--red);
+    background: none;
+    border: .1rem solid var(--red);
+}
+#chat {
+    color: var(--green);
+    background: none;
+    border: .1rem solid var(--green);
+}
+.error {
+    color: var(--red);
+    font-size: .8rem;
+    text-align: center;
+    margin-top: 1rem;
+}

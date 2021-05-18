@@ -1,0 +1,70 @@
+.container {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.container::before {
+    content: '';
+    width: 27rem;
+    height: 27rem;
+    background: linear-gradient(to top right, #fff, #e1e8ff);
+    border-radius: 5rem;
+    position: absolute;
+    transform: rotate(30deg) translate(-12rem, -28rem);
+}
+.container::after {
+    content: '';
+    width: 27rem;
+    height: 27rem;
+    background: linear-gradient(to bottom right, #fff, #e1e8ff);
+    border-radius: 5rem;
+    position: absolute;
+    transform: rotate(30deg) translate(18rem, 12rem);
+}
+
+.auth {
+    width: 75%;
+    position: relative;
+    margin: 10vw 0;
+    z-index: 1;
+}
+.auth h1 {
+    margin-bottom: 3rem;
+}
+.auth > label {
+    color: var(--grey);
+    display: block;
+    margin: 0 .5rem .8rem;
+}
+.forgot {
+    width: fit-content;
+    color: var(--blue);
+    font-size: .8rem;
+    font-weight: bold;
+    margin: -1rem 0 0 auto;
+    cursor: pointer;
+}
+.error {
+    color: var(--red);
+    font-size: .75rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+.auth button {
+    width: 100%;
+    padding: .9rem 0;
+    margin: 1rem 0 2rem;
+}
+
+/* Other */
+.auth > p {
+    font-size: .9rem;
+    text-align: center;
+}
+.auth b {
+    color: var(--blue);
+    cursor: pointer;
+}

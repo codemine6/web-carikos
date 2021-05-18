@@ -1,0 +1,101 @@
+.container {
+    margin: 4rem 1.5rem 8rem;
+}
+.container > h4 {
+    margin: 1rem 0 .5rem;
+}
+
+/* Price */
+.price {
+    color: var(--blue);
+    font-weight: bold;
+    margin-left: 1rem;
+}
+
+/* Detail */
+.detail {
+    display: flex;
+    align-items: center;
+    margin: 1rem;
+}
+.detail button {
+    width: 2.3rem;
+    line-height: 2.3rem;
+    color: var(--white);
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: var(--green);
+    border: none;
+    border-radius: .5rem;
+    outline: none;
+    cursor: pointer;
+}
+.detail button:disabled {
+    background: var(--light-green);
+}
+.detail span {
+    width: 2rem;
+    color: var(--blue);
+    font-weight: bold;
+    text-align: center;
+    margin: 0 .5rem;
+}
+.detail p {
+    color: var(--grey);
+    margin-left: 1rem;
+}
+
+/* Payment */
+.payment {
+    border: .1rem solid var(--blue);
+    border-radius: .5rem;
+}
+.payment div {
+    display: flex;
+    align-items: center;
+    padding: .8rem 1rem;
+}
+.payment i {
+    width: 1rem;
+    height: 1rem;
+    border: .1rem solid var(--blue);
+    border-radius: 50%;
+    position: relative;
+    margin-right: 1rem;
+}
+.payment i::before {
+    content: '';
+    width: .6rem;
+    height: .6rem;
+    top: .1rem;
+    left: .1rem;
+    background: var(--blue);
+    border-radius: 50%;
+    position: absolute;
+}
+.payment p {
+    color: var(--blue);
+    font-size: .9rem;
+    font-weight: bold;
+}
+
+/* Action */
+.action {
+    width: 100%;
+    max-width: inherit;
+    bottom: 0;
+    text-align: center;
+    background: var(--white);
+    box-shadow: 0 0 .5rem var(--shadow);
+    position: fixed;
+    padding: 1rem;
+}
+.action p {
+    color: var(--red);
+    font-size: .8rem;
+}
+.action button {
+    width: calc(100% - 1rem);
+    padding: .8rem;
+    margin: .5rem;
+}

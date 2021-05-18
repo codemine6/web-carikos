@@ -1,0 +1,55 @@
+.form {
+    position: relative;
+    display: flex;
+    margin-top: 1rem;
+}
+.form span {
+    top: .5rem;
+    left: .7rem;
+    color: var(--dark);
+    position: absolute;
+    pointer-events: none;
+}
+.form input {
+    width: 67%;
+    font-size: 1rem;
+    font-family: inherit;
+    border: .1rem solid var(--light);
+    border-radius: .5rem;
+    outline: none;
+    padding: .5rem .7rem .5rem 2.5rem;
+    margin-right: .5rem;
+}
+.form div {
+    width: 33%;
+    color: var(--white);
+    font-size: .8rem;
+    font-weight: bold;
+    background: var(--blue);
+    border-radius: .5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.form i {
+    width: .8rem;
+    fill: var(--white);
+    margin-left: .5rem;
+}
+
+/* Types */
+.types {
+    width: 33%;
+    border-radius: .5rem;
+    box-shadow: 0 0 .5rem var(--shadow);
+    padding: .2rem;
+    margin: .5rem 0 0 auto;
+}
+.types p {
+    color: var(--dark);
+    font-size: .9rem;
+    text-align: center;
+    margin: .7rem 1rem;
+    cursor: pointer;
+}

@@ -1,0 +1,46 @@
+.form {
+    position: relative;
+}
+.form input, .form textarea {
+    width: 100%;
+    font-size: 1rem;
+    font-family: inherit;
+    border: .1rem solid var(--light);
+    border-radius: .5rem;
+    outline: none;
+    resize: none;
+    padding: .5rem .7rem;
+    margin: .5rem 0;
+}
+.error {
+    color: var(--red);
+    font-size: .75rem;
+}
+
+/* List */
+.list {
+    width: 100%;
+    max-height: 14rem;
+    top: 4.8rem;
+    background: var(--white);
+    border-radius: .5rem;
+    box-shadow: 0 0 .5rem var(--shadow);
+    position: absolute;
+    overflow-y: auto;
+    z-index: 1;
+}
+.list p {
+    color: var(--dark);
+    font-size: .9rem;
+    margin: .7rem 1rem;
+    cursor: pointer;
+}
+
+/* Map */
+.map {
+    height: 9rem;
+    border-radius: .5rem;
+    overflow: hidden;
+    margin: .5rem 0 1.5rem;
+    cursor: pointer;
+}

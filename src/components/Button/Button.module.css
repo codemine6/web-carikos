@@ -1,0 +1,31 @@
+.button {
+    color: var(--white);
+    font-weight: bold;
+    font-family: inherit;
+    background: var(--blue);
+    border: none;
+    border-radius: .5rem;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+    padding: .6rem 1rem;
+    cursor: pointer;
+}
+.button:disabled {
+    color: var(--grey);
+    background: var(--light);
+}
+.ripple {
+    background: var(--light);
+    border-radius: 50%;
+    position: absolute;
+    transform: scale(0);
+    animation: ripple .7s linear;
+}
+
+@keyframes ripple {
+    to {
+        opacity: 0;
+        transform: scale(3);
+    }
+}

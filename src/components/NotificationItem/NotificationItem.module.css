@@ -1,0 +1,23 @@
+.item {
+    border-radius: .5rem;
+    box-shadow:  0 .1rem .5rem var(--shadow);
+    padding: .7rem 1rem;
+    margin-bottom: .7rem;
+    cursor: pointer;
+}
+.notRead {
+    background: var(--light-blue);
+}
+.item span {
+    color: var(--grey);
+    font-size: .8rem;
+}
+.item p {
+    color: var(--dark);
+    font-size: .8rem;
+    margin-top: .3rem;
+}
+.item span {
+    text-align: right;
+    display: block;
+}

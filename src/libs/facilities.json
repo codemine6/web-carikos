@@ -1,0 +1,50 @@
+[
+    {
+        "id": "1",
+        "name": "AC"
+    },
+    {
+        "id": "2",
+        "name": "Kamar mandi"
+    },
+    {
+        "id": "3",
+        "name": "Kamar tidur"
+    },
+    {
+        "id": "4",
+        "name": "CCTV"
+    },
+    {
+        "id": "5",
+        "name": "Lemari"
+    },
+    {
+        "id": "6",
+        "name": "Dapur"
+    },
+    {
+        "id": "7",
+        "name": "Area parkir"
+    },
+    {
+        "id": "8",
+        "name": "Lemari Pendingin"
+    },
+    {
+        "id": "9",
+        "name": "Sofa"
+    },
+    {
+        "id": "10",
+        "name": "Televisi"
+    },
+    {
+        "id": "11",
+        "name": "Mesin cuci"
+    },
+    {
+        "id": "12",
+        "name": "Wifi"
+    }
+]

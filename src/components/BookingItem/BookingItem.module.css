@@ -1,0 +1,83 @@
+.item {
+    border-radius: .5rem;
+    box-shadow: 0 0 .5rem var(--shadow);
+    padding: 1rem;
+    margin: 1rem 0;
+    cursor: pointer;
+}
+
+/* Info */
+.info {
+    border-bottom: .1rem solid var(--light);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: .8rem;
+    margin-bottom: .8rem;
+}
+.info p {
+    font-size: .75rem;
+    font-weight: bold;
+    border-radius: .3rem;
+    padding: .2rem .4rem;
+}
+.info span {
+    color: var(--blue);
+    font-size: .8rem;
+    font-weight: bold;
+}
+.waiting {
+    color: var(--orange);
+    background: var(--light-orange);
+}
+.confirmed, .success {
+    color: var(--blue);
+    background: var(--light-blue);
+}
+.canceled {
+    color: var(--red);
+    background: var(--light-red);
+}
+
+/* Room */
+.room {
+    display: flex;
+}
+.room img {
+    width: 4rem;
+    height: 3rem;
+    margin-right: 1rem;
+}
+.location {
+    display: flex;
+    align-items: center;
+}
+.location svg {
+    width: 1.3rem;
+    fill: var(--blue);
+    margin-right: .5rem;
+}
+.location span {
+    color: var(--blue);
+    font-size: .75rem;
+    font-weight: bold;
+}
+.location p {
+    color: var(--grey);
+    font-size: .75rem;
+    font-weight: bold;
+}
+
+/* Detail */
+.detail {
+    display: flex;
+    justify-content: space-between;
+    margin-top: .5rem;
+}
+.detail p {
+    font-size: .75rem;
+}
+.detail span {
+    font-size: .8rem;
+    font-weight: bold;
+}

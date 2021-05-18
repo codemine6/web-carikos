@@ -1,0 +1,28 @@
+{
+    "name": "Carikos App",
+    "short_name": "Carikos",
+    "description": "Cari, bayar, dan pesan kost dengan mudah",
+    "start_url": ".",
+    "theme_color": "#fff",
+    "background_color": "#fff",
+    "orientation": "portrait",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "icons/logo-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/logo-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/logo-144.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        }
+    ]
+}

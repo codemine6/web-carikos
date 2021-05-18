@@ -1,0 +1,33 @@
+.navbar {
+    width: 100%;
+    max-width: inherit;
+    height: 4rem;
+    top: 0;
+    background: var(--white);
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    z-index: 1;
+}
+.navbar i {
+    width: 1.3rem;
+    fill: var(--grey);
+    cursor: pointer;
+}
+
+.menu {
+    top: .3rem;
+    right: .3rem;
+    background: var(--white);
+    border-radius: .5rem;
+    box-shadow: 0 0 .5rem var(--shadow);
+    position: absolute;
+    padding: .3rem;
+}
+.menu p {
+    font-size: .8rem;
+    margin: 1rem;
+    cursor: pointer;
+}

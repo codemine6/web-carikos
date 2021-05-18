@@ -1,0 +1,83 @@
+.card {
+    border-radius: .5rem;
+    box-shadow: 0 0 .7rem var(--shadow);
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.card img {
+    width: 100%;
+    height: 8rem;
+    object-fit: cover;
+}
+
+.detail {
+    position: relative;
+    padding: .15rem .5rem .5rem;
+}
+
+.rating {
+    right: .5rem;
+    position: absolute;
+}
+.rating p {
+    color: var(--grey);
+    font-size: .8rem;
+    display: inline-block;
+}
+.rating span {
+    color: var(--yellow);
+}
+
+/* Type */
+.type span {
+    font-size: .75rem;
+    font-weight: bold;
+    border-radius: .3rem;
+    padding: .05rem .3rem;
+}
+.all {
+    color: var(--orange);
+    border: .1rem solid var(--orange);
+}
+.male {
+    color: var(--green);
+    border: .1rem solid var(--green);
+}
+.female {
+    color: var(--pink);
+    border: .1rem solid var(--pink);
+}
+
+/* Name */
+.name {
+    font-size: .9rem;
+    font-weight: bold;
+    margin-top: .3rem;
+}
+
+/* City */
+.city {
+    display: flex;
+}
+.city svg {
+    width: 1.1rem;
+    fill: var(--blue);
+    margin-right: .2rem;
+}
+.city span {
+    color: var(--blue);
+    font-size: .75rem;
+    font-weight: bold;
+}
+.city p {
+    color: var(--grey);
+    font-size: .75rem;
+    font-weight: bold;
+}
+.price {
+    font-size: .75rem;
+    font-weight: bold;
+    text-align: right;
+    margin-top: .5rem;
+}

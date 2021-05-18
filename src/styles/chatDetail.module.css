@@ -1,0 +1,17 @@
+/* List */
+.list {
+    height: 100vh;
+    background: var(--light);
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    padding: 4rem 1rem;
+}
+.list::-webkit-scrollbar {
+    display: none;
+}
+.date {
+    color: var(--dark);
+    font-size: .8rem;
+    text-align: center;
+    margin: 1rem;
+}

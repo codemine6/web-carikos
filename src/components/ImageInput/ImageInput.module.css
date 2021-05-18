@@ -1,0 +1,49 @@
+.form {
+    background: var(--light);
+    border-radius: .5rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: .5rem;
+    margin: 1rem 0;
+}
+.form input {
+    display: none;
+}
+.form label {
+    font-size: 2rem;
+    border: .1rem dashed var(--light-grey);
+    border-radius: .5rem;
+    padding: 0 .95rem .4rem;
+    margin: .5rem;
+    cursor: pointer;
+}
+
+.image {
+    width: calc(100% / 4 - 1rem);
+    position: relative;
+    overflow: hidden;
+    padding-top: 15%;
+    margin: .5rem;
+}
+.image img {
+    width: 100%;
+    top: 0;
+    position: absolute;
+}
+.image span {
+    top: .2rem;
+    right: .2rem;
+    background: var(--light);
+    border-radius: .5rem;
+    position: absolute;
+    padding: .4rem .3rem;
+    cursor: pointer;
+}
+.image i {
+    width: .5rem;
+    height: .15rem;
+    background: var(--dark);
+    border-radius: .5rem;
+    display: block;
+}

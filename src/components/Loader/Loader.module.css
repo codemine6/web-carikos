@@ -1,0 +1,39 @@
+.loader {
+    top: 50%;
+    left: 50%;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+.loader svg {
+    width: 2.7rem;
+    height: 2.7rem;
+    background: var(--white);
+    border-radius: 50%;
+    padding: .1rem;
+    animation: rotate 8s infinite linear;
+}
+.loader circle {
+    stroke: var(--blue);
+    animation: circle 2s infinite;
+}
+
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes circle {
+    0% {
+        stroke-dasharray: 0, 1000;
+    }
+    50% {
+        stroke-dasharray: 130, 130;
+        stroke-dashoffset: -100;
+    }
+    100% {
+        stroke-dasharray: 0, 1000;
+        stroke-dashoffset: -250;
+    }
+}

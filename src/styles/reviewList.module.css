@@ -1,0 +1,29 @@
+.container {
+    margin: 4rem 1.5rem 1.5rem;
+}
+
+/* Menu */
+.menu {
+    margin: 1rem 0;
+}
+.menu button {
+    width: 50%;
+    font-size: .9rem;
+    font-family: inherit;
+    background: none;
+    border: none;
+    border-bottom: .1rem solid #eee;
+    outline: none;
+    padding: .5rem;
+    cursor: pointer;
+}
+.selected {
+    color: var(--blue);
+    border-bottom: .1rem solid var(--blue) !important;
+}
+.empty {
+    top: 40%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}

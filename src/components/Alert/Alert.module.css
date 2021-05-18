@@ -1,0 +1,24 @@
+.alert {
+    width: 60%;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    background: var(--white);
+    border-radius: .5rem;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    padding: 1.5rem;
+    z-index: 3;
+}
+.alert button {
+    margin-top: 1rem;
+}
+.overlay {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--shadow);
+    position: absolute;
+    z-index: 2;
+}

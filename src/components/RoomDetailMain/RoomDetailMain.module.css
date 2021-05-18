@@ -1,0 +1,73 @@
+.name {
+    font-size: 1.4rem;
+}
+
+/* Rating */
+.rating {
+    display: flex;
+    align-items: center;
+}
+.rating span {
+    font-size: 1.2rem;
+    margin-right: .8rem;
+}
+.rating p {
+    color: var(--grey);
+    font-size: .9rem;
+}
+.rating div {
+    right: 1.5rem;
+    position: absolute;
+}
+.rating b {
+    font-size: .8rem;
+    border-radius: .3rem;
+    padding: .2rem .4rem;
+}
+.all {
+    color: var(--orange);
+    border: .1rem solid var(--orange);
+}
+.male {
+    color: var(--green);
+    border: .1rem solid var(--green);
+}
+.female {
+    color: var(--pink);
+    border: .1rem solid var(--pink);
+}
+
+/* Location */
+.location {
+    background: var(--light);
+    border-radius: .5rem;
+    display: flex;
+    align-items: center;
+    padding: .7rem 1rem;
+    margin: 1rem 0;
+}
+.location p {
+    color: var(--grey);
+    font-size: .8rem;
+    margin-top: .2rem;
+}
+.mapIcon {
+    width: 1.8rem;
+    background: none;
+    border: none;
+    outline: none;
+    margin-left: auto;
+    cursor: pointer;
+}
+
+/* Detail */
+.detail {
+    display: flex;
+    justify-content: space-between;
+    margin-top: .5rem;
+}
+.detail p {
+    color: var(--blue);
+    font-size: .9rem;
+    font-weight: bold;
+}
