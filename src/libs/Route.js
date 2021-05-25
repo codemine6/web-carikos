@@ -22,7 +22,7 @@ export function withAuth(gssp) {
 export function withNoAuth(gssp) {
     return async (context) => {
         const auth = getAuth(context)
-        if (auth) {
+        if (auth?.exp > Math.floor(Date.now() / 1000)) {
             return {
                 redirect: {
                     destination: '/',
