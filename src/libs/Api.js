@@ -7,7 +7,19 @@ const API = axios.create({
     withCredentials: true
 })
 
+function setCookies(token) {
+    nookies.set(null, 'access', token.access, {maxAge: 30 * 24 * 60 * 60})
+    nookies.set(null, 'refresh', token.refresh, {maxAge: 30 * 24 * 60 * 60})
+}
+
 API.interceptors.response.use(response => {
+    if (response.data.data?.token) {
+        setCookies(response.data.data.token)
+    }
+    if (response.config.url === '/auth/logout') {
+        nookies.destroy(null, 'access')
+        nookies.destroy(null, 'refresh')
+    }
     return response
 }, async error => {
     const originalRequest = error.config
@@ -17,9 +29,8 @@ API.interceptors.response.use(response => {
 
         return API.get('/auth/token').then(res => {
             if (res.status === 201) {
-                console.log(res.data.token)
-                nookies.set(null, 'token', res.data.token)
                 console.warn('New token generated')
+                setCookies(res.data.data.token)
                 return API(originalRequest)
             }
         })

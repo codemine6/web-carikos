@@ -1,6 +1,9 @@
+import nookies from 'nookies'
+
 function getAuth(context) {
-    if (!context.req.headers.cookie) return null
-    const token = context.req.headers.cookie.split('; ')[0].split('=')[1].split('.')[1]
+    const cookies = nookies.get(context)
+    if (!cookies) return null
+    const token = cookies.access.split('.')[1]
     return JSON.parse(Buffer.from(token, 'base64').toString())
 }
 
