@@ -11,7 +11,8 @@ function setCookies(token) {
     const config = {
         maxAge: 30 * 24 * 60 * 60,
         sameSite: 'none',
-        secure: true
+        secure: true,
+        domain: 'api-carikos.herokuapp.com'
     }
 
     nookies.set(null, 'access', token.access, config)
