@@ -1,4 +1,4 @@
-import API from 'libs/Api'
+import {getData} from 'libs/Api'
 import {withCustomerAuth} from 'libs/Route'
 import styles from 'styles/roomList.module.css'
 
@@ -29,8 +29,7 @@ export default function Favorites({rooms}) {
 
 export const getServerSideProps = withCustomerAuth(async context => {
     try {
-        const cookie = context.req.headers.cookie
-        const res = await API.get('rooms/favorite', {headers: {cookie}})
+        const res = await getData('rooms/favorite', context)
         return {props: {rooms: res.data.data}}
     } catch {
         return {notFound: true}

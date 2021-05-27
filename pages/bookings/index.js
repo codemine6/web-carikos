@@ -1,6 +1,6 @@
 import {useRouter} from 'next/router'
 import {useAuthContext} from 'contexts/AuthContext'
-import API from 'libs/Api'
+import {getData} from 'libs/Api'
 import {withAuth} from 'libs/Route'
 import styles from 'styles/bookings.module.css'
 
@@ -44,8 +44,7 @@ export default function Bookings({bookings}) {
 
 export const getServerSideProps = withAuth(async context => {
     try {
-        const cookie = context.req.headers.cookie
-        const res = await API.get(`/bookings?status=${context.query.status}`, {headers: {cookie}})
+        const res = await getData(`/bookings?status=${context.query.status}`, context)
         return {props: {bookings: res.data.data}}
     } catch {
         return {notFound: true}

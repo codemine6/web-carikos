@@ -1,5 +1,5 @@
 import {useRouter} from 'next/router'
-import API from 'libs/Api'
+import {getData} from 'libs/Api'
 import {withCustomerAuth} from 'libs/Route'
 import styles from 'styles/bookingFinish.module.css'
 
@@ -46,8 +46,7 @@ export default function Finish({booking}) {
 
 export const getServerSideProps = withCustomerAuth(async context => {
     try {
-        const cookie = context.req.headers.cookie
-        const res = await API.get(`/bookings/${context.query.booking}`, {headers: {cookie}})
+        const res = await getData(`/bookings/${context.query.booking}`, context)
         return {props: {booking: res.data.data}}
     } catch {
         return {notFound: true}

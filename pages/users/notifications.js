@@ -1,5 +1,5 @@
 import {withAuth} from 'libs/Route'
-import API from 'libs/Api'
+import {getData} from 'libs/Api'
 import styles from 'styles/notifications.module.css'
 
 import Head from 'next/head'
@@ -30,8 +30,7 @@ export default function Notifications({notifications}) {
 
 export const getServerSideProps = withAuth(async context => {
     try {
-        const cookie = context.req.headers.cookie
-        const res = await API.get('/notifications', {headers: {cookie}})
+        const res = await getData('/notifications', context)
         return {props: {notifications: res.data.data}}
     } catch {
         return {notFound: true}

@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import {useAuthContext} from 'contexts/AuthContext'
 import Time from 'libs/Time'
-import API from 'libs/Api'
+import {getData} from 'libs/Api'
 import {withAuth} from 'libs/Route'
 import styles from 'styles/bookingDetail.module.css'
 
@@ -75,8 +75,7 @@ export default function BookingDetail(props) {
 
 export const getServerSideProps = withAuth(async context => {
     try {
-        const cookie = context.req.headers.cookie
-        const res = await API.get(`/bookings/${context.query.id}`, {headers: {cookie}})
+        const res = await getData(`/bookings/${context.query.id}`, context)
         return {props: {booking: res.data.data}}
     } catch {
         return {notFound: true}

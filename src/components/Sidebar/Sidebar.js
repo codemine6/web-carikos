@@ -14,8 +14,8 @@ export default function Sidebar(props) {
     async function logout() {
         try {
             props.onClose()
-            await API.get('/auth/logout')
             dispatch(null)
+            API.get('/auth/logout')
         } catch {}
     }
 

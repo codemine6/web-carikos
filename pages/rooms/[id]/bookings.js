@@ -1,4 +1,4 @@
-import API from 'libs/Api'
+import {getData} from 'libs/Api'
 import {withOwnerAuth} from 'libs/Route'
 import styles from 'styles/roomBookings.module.css'
 
@@ -29,8 +29,7 @@ export default function Bookings({bookings}) {
 
 export const getServerSideProps = withOwnerAuth(async context => {
     try {
-        const cookie = context.req.headers.cookie
-        const res = await API.get(`/bookings/${context.query.id}/room`, {headers: {cookie}})
+        const res = await getData(`/bookings/${context.query.id}/room`, context)
         return {props: {bookings: res.data.data}}
     } catch {
         return {notFound: true}

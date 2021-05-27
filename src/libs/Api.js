@@ -16,16 +16,16 @@ API.interceptors.request.use(config => {
     if (access) {
         config.headers.Authorization = 'Bearer ' + access
     }
+    if (config.url === '/auth/logout') {
+        nookies.destroy(null, 'access')
+        nookies.destroy(null, 'refresh')
+    }
     return config
 }, error => Promise.reject(error))
 
 API.interceptors.response.use(response => {
     if (response.data.data?.token) {
         setCookies(response.data.data.token)
-    }
-    if (response.config.url === '/auth/logout') {
-        nookies.destroy(null, 'access')
-        nookies.destroy(null, 'refresh')
     }
     return response
 }, async error => {
@@ -45,5 +45,16 @@ API.interceptors.response.use(response => {
     }
     return Promise.reject(error)
 })
+
+export function getData(url, context) {
+    const {access} = nookies.get(context)
+    const config = {
+        headers: {
+            Authorization: 'Bearer ' + access
+        }
+    }
+
+    return API.get(url, config)
+}
 
 export default API

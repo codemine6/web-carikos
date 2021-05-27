@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import {useRouter} from 'next/router'
-import API from 'libs/Api'
+import {getData} from 'libs/Api'
 import {withCustomerAuth} from 'libs/Route'
 import styles from 'styles/addReview.module.css'
 
@@ -62,7 +62,7 @@ export default function Add({review}) {
 export const getServerSideProps = withCustomerAuth(async context => {
     try {
         const cookie = context.req.headers.cookie
-        const res = await API.get(`/reviews/${context.query.booking}`, {headers: {cookie}})
+        const res = await getData(`/reviews/${context.query.booking}`, context)
         return {props: {review: res.data.data}}
     } catch {
         return {notFound: true}

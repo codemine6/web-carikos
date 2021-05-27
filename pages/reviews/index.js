@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import {useRouter} from 'next/router'
-import API from 'libs/Api'
+import {getData} from 'libs/Api'
 import {withOwnerAuth} from 'libs/Route'
 import styles from 'styles/reviewList.module.css'
 
@@ -41,8 +41,7 @@ export default function Reviews({reviews}) {
 
 export const getServerSideProps = withOwnerAuth(async context => {
     try {
-        const cookie = context.req.headers.cookie
-        const res = await API.get(`/reviews?type=${context.query.type}`, {headers: {cookie}})
+        const res = await getData(`/reviews?type=${context.query.type}`, context)
         return {props: {reviews: res.data.data}}
     } catch {
         return {notFound: true}
