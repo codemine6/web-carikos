@@ -10,7 +10,8 @@ const API = axios.create({
 function setCookies(token) {
     const config = {
         maxAge: 30 * 24 * 60 * 60,
-        // sameSite: 'none'
+        sameSite: 'none',
+        secure: true
     }
 
     nookies.set(null, 'access', token.access, config)
