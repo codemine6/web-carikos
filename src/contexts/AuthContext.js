@@ -15,7 +15,8 @@ export function AuthContextProvider(props) {
             try {
                 const res = await API.get('/auth/status')
                 setAuth(res.data.data)
-            } catch {
+            } catch (err) {
+                console.log(err.response)
                 setAuth(null)
             }
         }

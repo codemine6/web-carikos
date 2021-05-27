@@ -18,6 +18,12 @@ function setCookies(token) {
     nookies.set(null, 'refresh', token.refresh, config)
 }
 
+// API.interceptors.request.use(config => {
+//     const cookies = nookies.get()
+//     console.log(config)
+//     return config
+// }, error => Promise.reject(error))
+
 API.interceptors.response.use(response => {
     if (response.data.data?.token) {
         setCookies(response.data.data.token)
