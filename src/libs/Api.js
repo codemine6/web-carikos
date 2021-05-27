@@ -2,25 +2,22 @@ import axios from 'axios'
 import nookies from 'nookies'
 import config from 'libs/config'
 
-const API = axios.create({
-    baseURL: config.apiUrl,
-    withCredentials: true
-})
-
 function setCookies(token) {
-    const config = {
-        maxAge: 30 * 24 * 60 * 60
-    }
-
-    nookies.set(null, 'access', token.access, config)
-    nookies.set(null, 'refresh', token.refresh, config)
+    nookies.set(null, 'access', token.access, {maxAge: 30 * 24 * 60 * 60})
+    nookies.set(null, 'refresh', token.refresh, {maxAge: 30 * 24 * 60 * 60})
 }
 
-// API.interceptors.request.use(config => {
-//     const cookies = nookies.get()
-//     console.log(config)
-//     return config
-// }, error => Promise.reject(error))
+const API = axios.create({
+    baseURL: config.apiUrl
+})
+
+API.interceptors.request.use(config => {
+    const {access} = nookies.get()
+    if (access) {
+        config.headers.Authorization = 'Bearer ' + access
+    }
+    return config
+}, error => Promise.reject(error))
 
 API.interceptors.response.use(response => {
     if (response.data.data?.token) {
@@ -36,8 +33,9 @@ API.interceptors.response.use(response => {
 
     if (error.response?.status === 401 && !error.config._retry) {
         originalRequest._retry = true
+        const {refresh} = nookies.get()
 
-        return API.get('/auth/token').then(res => {
+        return API.post('/auth/token', {refresh}).then(res => {
             if (res.status === 201) {
                 console.warn('New token generated')
                 setCookies(res.data.data.token)

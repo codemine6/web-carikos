@@ -1,9 +1,9 @@
 import nookies from 'nookies'
 
 function getAuth(context) {
-    const cookies = nookies.get(context)
-    if (!cookies.access) return null
-    const token = cookies.access.split('.')[1]
+    const {access} = nookies.get(context)
+    if (!access) return null
+    const token = access.split('.')[1]
     return JSON.parse(Buffer.from(token, 'base64').toString())
 }
 
