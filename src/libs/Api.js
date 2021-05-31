@@ -3,8 +3,8 @@ import nookies from 'nookies'
 import config from 'libs/config'
 
 function setCookies(token) {
-    nookies.set(null, 'access', token.access, {maxAge: 30 * 24 * 60 * 60})
-    nookies.set(null, 'refresh', token.refresh, {maxAge: 30 * 24 * 60 * 60})
+    nookies.set(null, 'access', token.access, {maxAge: 30 * 24 * 60 * 60, path: '/'})
+    nookies.set(null, 'refresh', token.refresh, {maxAge: 30 * 24 * 60 * 60, path: '/'})
 }
 
 const API = axios.create({
