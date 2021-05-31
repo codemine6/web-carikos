@@ -8,12 +8,13 @@ export default function RoomDetailMain({room}) {
     const router = useRouter()
 
     function findLocation() {
-        router.push(`/room/${room._id}/location`, {
+        const data = {
             location: {coords: room.location.coords},
             images: room.images[0],
             name: room.name,
             pricing: {price: room.pricing.price}
-        })
+        }
+        router.push({pathname: `/rooms/${room._id}/location`, query: JSON.stringify(data)})
     }
 
     return (

@@ -4,8 +4,9 @@ import {useFormContext} from 'contexts/RoomFormContext'
 import styles from 'styles/setPosition.module.css'
 
 import {Gps} from 'libs/Icons'
+import Head from 'next/head'
 
-const Map = dynamic(() => import('components/Map/Map'), {ssr: false})
+const SetMap = dynamic(() => import('components/Map/SetMap'), {ssr: false})
 
 export default function SetPosition() {
     const {form, dispatch} = useFormContext()
@@ -39,26 +40,29 @@ export default function SetPosition() {
 
     return (
         <>
-            <div className={styles.search}>
-                <input placeholder="Cari tempat.." value={input} onChange={handleChange} onFocus={e => e.target.select()}/>
-                <div className={styles.results}>
-                    {results.map(place => (
-                        <div key={place.place_id} onClick={() => selectResult(place)}>
-                            <p>{place.display_name}</p>
-                            <img src={place.icon} alt=""/>
-                        </div>
-                    ))}
+            <Head>
+                <title>Set Position</title>
+            </Head>
+            <main>
+                <div className={styles.search}>
+                    <input placeholder="Cari tempat.." value={input} onChange={handleChange} onFocus={e => e.target.select()}/>
+                    <div className={styles.results}>
+                        {results.map(place => (
+                            <div key={place.place_id} onClick={() => selectResult(place)}>
+                                <p>{place.display_name}</p>
+                                <img src={place.icon} alt=""/>
+                            </div>
+                        ))}
+                    </div>
                 </div>
-            </div>
-            <div className={styles.map}>
-                <Map
-                    center={form.location.coords}
-                    zoom={15}
-                    draggableMarker={true}
-                    setPosition={dispatch}
-                />
-                <i onClick={getMyPosition}><Gps/></i>
-            </div>
+                <div className={styles.map}>
+                    <SetMap
+                        center={form.location.coords}
+                        setPosition={dispatch}
+                    />
+                    <i onClick={getMyPosition}><Gps/></i>
+                </div>
+            </main>
         </>
     )
 }

@@ -48,14 +48,7 @@ export default function LocationForm() {
                 </div>}
             </div>
             <div className={styles.map} onClick={() => router.push('/rooms/set-position')}>
-                <Map
-                    center={form.location.coords}
-                    zoom={15}
-                    zoomControl={false}
-                    dragging={false}
-                    doubleClickZoom={false}
-                    scrollWheelZoom={false}
-                />
+                <Map center={form.location.coords}/>
             </div>
         </div>
     )
