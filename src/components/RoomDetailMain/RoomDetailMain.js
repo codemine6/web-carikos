@@ -9,12 +9,12 @@ export default function RoomDetailMain({room}) {
 
     function findLocation() {
         const data = {
-            location: {coords: room.location.coords},
+            latitude: room.location.coords[0],
+            longitude: room.location.coords[1],
             images: room.images[0],
-            name: room.name,
-            pricing: {price: room.pricing.price}
+            name: room.name
         }
-        router.push({pathname: `/rooms/${room._id}/location`, query: JSON.stringify(data)})
+        router.push({pathname: `/rooms/${room._id}/location`, query: data})
     }
 
     return (

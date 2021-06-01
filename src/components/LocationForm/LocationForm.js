@@ -6,7 +6,7 @@ import styles from './LocationForm.module.css'
 
 import cities from 'libs/cities.json'
 
-const Map = dynamic(() => import('components/Map/Map'), {ssr: false})
+const PreviewMap = dynamic(() => import('components/Map/PreviewMap'), {ssr: false})
 
 
 export default function LocationForm() {
@@ -48,7 +48,7 @@ export default function LocationForm() {
                 </div>}
             </div>
             <div className={styles.map} onClick={() => router.push('/rooms/set-position')}>
-                <Map center={form.location.coords}/>
+                <PreviewMap center={form.location.coords}/>
             </div>
         </div>
     )

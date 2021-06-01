@@ -1,0 +1,21 @@
+.detail {
+    left: 1.5rem;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    background: var(--white);
+    border-radius: .5rem;
+    box-shadow: 0 0 .5rem var(--shadow);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    padding: .5rem 1rem;
+}
+.detail i {
+    width: 1.5rem;
+    fill: var(--blue);
+    cursor: pointer;
+}
+.detail div {
+    text-align: center;
+}

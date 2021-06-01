@@ -32,7 +32,7 @@ export default function NavbarDetail() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const res = await API.get(`/users/${auth._id}`)
+                const res = await API.get('/users/profile')
                 res.data.data.roomFavorites.find(id => id === router.query.id) && setFavorited(true)
             } catch {}
         }
