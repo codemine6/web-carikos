@@ -9,7 +9,7 @@ const initialState = {
     location: {
         address: '',
         city: '',
-        coords: [-6.917464, 107.619125]
+        coords: []
     },
     name: '',
     pricing: {
@@ -64,6 +64,7 @@ export function RoomFormContextProvider(props) {
     useEffect(() => {
         const storage = JSON.parse(localStorage.getItem('form-data'))
         storage && dispatch({type: 'SET_ALL', payload: storage})
+        !storage?.location?.coords.length && dispatch({type: 'SET_COORDS', payload: [-6.917464, 107.619125]})
     }, [])
 
     useEffect(() => {

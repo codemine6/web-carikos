@@ -6,8 +6,9 @@ import styles from './LocationForm.module.css'
 
 import cities from 'libs/cities.json'
 
-const PreviewMap = dynamic(() => import('components/Map/PreviewMap'), {ssr: false})
-
+const MapContainer = dynamic(() => import('react-leaflet').then(m => m.MapContainer), {ssr: false})
+const TileLayer = dynamic(() => import('react-leaflet').then(m => m.TileLayer), {ssr: false})
+const Marker = dynamic(() => import('react-leaflet').then(m => m.Marker), {ssr: false})
 
 export default function LocationForm() {
     const {form, dispatch} = useFormContext()
@@ -41,14 +42,18 @@ export default function LocationForm() {
 
                 <textarea placeholder="Alamat lengkap" value={form.location.address} onChange={setAddress}/>
 
-                {list?.length > 0 && <div className={styles.list}>
+                {list?.length && <div className={styles.list}>
                     {list.map((city, i) => (
                         <p onClick={() => setCity(city)} key={i}>{city}</p>
                     ))}
                 </div>}
             </div>
             <div className={styles.map} onClick={() => router.push('/rooms/set-position')}>
-                <PreviewMap center={form.location.coords}/>
+                {form.location.coords.length &&
+                <MapContainer center={form.location.coords} zoom={15} zoomControl={false} scrollWheelZoom={false} dragging={false}>
+                    <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
+                    <Marker position={form.location.coords}/>
+                </MapContainer>}
             </div>
         </div>
     )

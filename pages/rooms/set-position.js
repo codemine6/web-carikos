@@ -56,10 +56,11 @@ export default function SetPosition() {
                     </div>
                 </div>
                 <div className={styles.map}>
+                    {form.location.coords.length &&
                     <SetMap
                         center={form.location.coords}
                         setPosition={dispatch}
-                    />
+                    />}
                     <i onClick={getMyPosition}><Gps/></i>
                 </div>
             </main>

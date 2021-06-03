@@ -93,7 +93,7 @@ export default function Edit() {
                 <div className={styles.city}>
                     <label>Kota</label>
                     <input value={city ?? auth.city} onChange={changeCity}/>
-                    {list?.length > 0 && <div className={styles.list}>
+                    {list?.length && <div className={styles.list}>
                         {list.map((city, i) => (
                             <p onClick={() => selectCity(city)} key={i}>{city}</p>
                         ))}
