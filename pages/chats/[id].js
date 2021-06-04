@@ -48,7 +48,6 @@ export default function Chat() {
         })
         socket.on('new_message', message => {
             socket.emit('read', message._id)
-            console.log(message)
             setMessages([...messagesRef.current, message])
         })
         socket.on('readed', id => {

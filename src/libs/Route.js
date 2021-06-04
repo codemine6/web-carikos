@@ -4,16 +4,20 @@ function getAuth(context) {
     const {access} = nookies.get(context)
     if (!access) return null
     const token = access.split('.')[1]
-    return JSON.parse(Buffer.from(token, 'base64').toString())
+    if (!token) return null
+    const data = JSON.parse(Buffer.from(token, 'base64').toString())
+    if (!('type' in data)) return null
+    return data
 }
 
 export function withAuth(gssp) {
     return async (context) => {
         const auth = getAuth(context)
+        const url = context.resolvedUrl.substr(1)
         if (!auth) {
             return {
                 redirect: {
-                    destination: '/login',
+                    destination: `/login?from=${url}`,
                     permanent:false
                 }
             }
@@ -40,10 +44,11 @@ export function withNoAuth(gssp) {
 export function withCustomerAuth(gssp) {
     return async (context) => {
         const auth = getAuth(context)
+        const url = context.resolvedUrl.substr(1)
         if (!auth) {
             return {
                 redirect: {
-                    destination: '/login',
+                    destination: `/login?from=${url}`,
                     permanent:false
                 }
             }
@@ -62,10 +67,11 @@ export function withCustomerAuth(gssp) {
 export function withOwnerAuth(gssp) {
     return async (context) => {
         const auth = getAuth(context)
+        const url = context.resolvedUrl.substr(1)
         if (!auth) {
             return {
                 redirect: {
-                    destination: '/login',
+                    destination: `/login?from=${url}`,
                     permanent:false
                 }
             }

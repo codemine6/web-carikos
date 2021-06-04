@@ -1,9 +1,8 @@
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 import {useRouter} from 'next/router'
 import {useAuthContext} from 'contexts/AuthContext'
-import useFetch from 'libs/useFetch'
 import {withAuth} from 'libs/Route'
-import API from 'libs/Api'
+import API, {getData} from 'libs/Api'
 import styles from 'styles/editProfile.module.css'
 
 import {Camera} from 'libs/Icons'
@@ -12,13 +11,14 @@ import Navbar from 'components/Navbar/Navbar'
 import Button from 'components/Button/Button'
 import Loader from 'components/Loader/Loader'
 
-export default function Edit() {
+import cities from 'libs/cities.json'
+
+export default function Edit({user}) {
     const {auth, dispatch} = useAuthContext()
-    const {data, isLoading} = useFetch(`/users/${auth._id}`)
-    const [profileImage, setProfileImage] = useState()
-    const [username, setUsername] = useState('')
-    const [phone, setPhone] = useState('')
-    const [city, setCity] = useState('')
+    const [profileImage, setProfileImage] = useState(user.profileImage)
+    const [username, setUsername] = useState(user.username)
+    const [phone, setPhone] = useState(user.phone)
+    const [city, setCity] = useState(user.city)
     const [list, setList] = useState()
     const [error, setError] = useState()
     const [loading, setLoading] = useState(false)
@@ -57,20 +57,12 @@ export default function Edit() {
         setLoading(true)
         try {
             const res = await API.patch('/users', {username, phone, city})
-            dispatch({...auth, ...res.data})
+            dispatch({...auth, ...res.data.data})
             router.back()
         } catch (err) {
             setError(err.response?.data.message)
         } finally {setLoading(false)}
     }
-
-    useEffect(() => {
-        if (data) {
-            setProfileImage(data.profileImage)
-            setUsername(data.username)
-            setPhone(data.phone)
-        }
-    }, [data])
 
     return (
         <>
@@ -102,9 +94,16 @@ export default function Edit() {
                 {error && <p className={styles.error}>{error}</p>}
                 <Button id={styles.save} onClick={!loading && saveProfile}>{loading ? 'Menyimpan..' : 'Simpan'}</Button>
             </main>
-            {(isLoading || loading) && <Loader/>}
+            {loading && <Loader/>}
         </>
     )
 }
 
-export const getServerSideProps = withAuth(() => ({props: {}}))
+export const getServerSideProps = withAuth(async context => {
+    try {
+        const res = await getData('/users/profile', context)
+        return {props: {user: res.data.data}}
+    } catch {
+        return {notFound: true}
+    }
+})

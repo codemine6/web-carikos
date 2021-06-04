@@ -115,4 +115,5 @@
     font-size: .9rem;
     white-space: nowrap;
     margin: .7rem 1rem;
+    cursor: pointer;
 }

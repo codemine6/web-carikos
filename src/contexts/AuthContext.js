@@ -1,4 +1,5 @@
 import {useState, useEffect, useContext, createContext} from 'react'
+import nookies from 'nookies'
 import API from 'libs/Api'
 
 const AuthContext = createContext()
@@ -19,7 +20,8 @@ export function AuthContextProvider(props) {
                 setAuth(null)
             }
         }
-        fetchData()
+        const {access} = nookies.get()
+        access && fetchData()
     }, [])
 
     return (

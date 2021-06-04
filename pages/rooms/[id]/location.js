@@ -10,7 +10,6 @@ const FindMap = dynamic(() => import('components/Map/FindMap'), {ssr: false})
 export default function Location() {
     const [myPosition, setMyPosition] = useState()
     const router = useRouter()
-    console.log(router.query)
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(({coords}) => {

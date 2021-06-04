@@ -36,7 +36,7 @@ export default function Sidebar(props) {
 
                 {auth?.type === 'owner' &&
                 <div className={styles.menu}>
-                    <Link href="/users/dashboard"><a><Dashboard/>Dashboard</a></Link>
+                    <Link href="/dashboard"><a><Dashboard/>Dashboard</a></Link>
                     <Link href="/chats"><a><Chat/>Diskusi</a></Link>
                     <Link href="/reviews?type=new"><a><Star/>Reviews</a></Link>
                     <Link href="/settings"><a><Settings/>Settings</a></Link>

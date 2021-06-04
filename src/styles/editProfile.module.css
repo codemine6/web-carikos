@@ -65,7 +65,6 @@
     max-height: 14rem;
     top: 4.1rem;
     background: var(--white);
-    border: .1rem solid var(--grey);
     border-radius: .5rem;
     box-shadow: 0 0 .5rem var(--shadow);
     position: absolute;
@@ -75,6 +74,7 @@
 .list p {
     color: var(--dark);
     font-size: .9rem;
+    white-space: nowrap;
     margin: .7rem 1rem;
     cursor: pointer;
 }
