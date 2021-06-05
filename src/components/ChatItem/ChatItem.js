@@ -14,7 +14,7 @@ export default function ChatItem({chat}) {
                 <span className={styles.time}>{new Date(chat.lastMessage.sendedAt).toString().substr(16, 5)}</span>
                 {chat.lastMessage.sender !== auth._id && chat.lastMessage.read === false ?
                 <b>{chat.lastMessage.text}</b> : <p>{chat.lastMessage.text}</p>}
-                {chat.newMessage > 0 && <span className={styles.new}>{chat.newMessage}</span>}
+                {chat.newMessage > 1 && <span className={styles.new}>{chat.newMessage}</span>}
             </div>
         </div>
     )
