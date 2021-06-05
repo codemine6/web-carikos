@@ -16,6 +16,7 @@
 }
 .price p {
     color: var(--dark);
+    font-size: .9rem;
     font-weight: bold;
 }
 .price span {
@@ -28,15 +29,15 @@
 
 /* Chat */
 .chat {
-    background: var(--green);
-    border: none;
+    background: var(--white);
+    border: .15rem solid var(--green);
     border-radius: .5rem;
     outline: none;
-    padding: .2rem .5rem;
+    padding: .1rem .4rem;
     margin-right: .5rem;
     cursor: pointer;
 }
 .chat svg {
     width: 1.7rem;
-    fill: var(--white);
+    fill: var(--green);
 }

@@ -1,10 +1,6 @@
-const withPWA = require('next-pwa')
-
-module.exports = withPWA({
-    pwa: {
-        dest: 'public',
-        disable: process.env.NODE_ENV === 'development',
-        swSrc: 'sw.js'
-    },
-    target: 'serverless'
-})
+module.exports = {
+    target: 'serverless',
+    env: {
+        pwa: 'enable'
+    }
+}

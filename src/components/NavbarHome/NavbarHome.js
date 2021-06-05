@@ -5,7 +5,7 @@ import {useAuthContext} from 'contexts/AuthContext'
 import config from 'libs/config'
 import styles from './NavbarHome.module.css'
 
-import {Bell, Chat, Close, Menu} from 'libs/Icons'
+import {Bell, ChatFill, Close, Menu} from 'libs/Icons'
 import Sidebar from 'components/Sidebar/Sidebar'
 
 export default function NavbarHome() {
@@ -41,7 +41,7 @@ export default function NavbarHome() {
                 </div>}
                 <div className={styles.menu}>
                     {auth && <>
-                        <i onClick={() => router.push('/chats')}><Chat/>{chats > 0 && <span>{chats}</span>}</i>
+                        <i onClick={() => router.push('/chats')}><ChatFill/>{chats > 0 && <span>{chats}</span>}</i>
                         <i onClick={() => router.push('/users/notifications')}><Bell/>{notifications > 0 && <span>{notifications}</span>}</i>
                     </>}
                     <i onClick={() => setOpen(!open)}>{open ? <Close/> : <Menu/>}</i>

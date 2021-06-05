@@ -21,6 +21,14 @@ export default function App({Component, pageProps}) {
         }
     }, [])
 
+    useEffect(() => {
+        if (process.env.pwa === 'enable' && 'serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(() => console.log('ServiceWorker registered!'))
+                .catch(() => console.log('ServiceWorker not registered!'))
+        }
+    }, [])
+
     return (
         <>
             {loading ? <main><Loader/></main> :
