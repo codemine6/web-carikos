@@ -10,8 +10,8 @@ import Sidebar from 'components/Sidebar/Sidebar'
 
 export default function NavbarHome() {
     const {auth} = useAuthContext()
-    const [chats, setChats] = useState([])
-    const [notifications, setNotifications] = useState(0)
+    const [chats, setChats] = useState()
+    const [notifications, setNotifications] = useState()
     const [open, setOpen] = useState(false)
     const router = useRouter()
 
