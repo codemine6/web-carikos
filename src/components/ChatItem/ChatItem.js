@@ -11,9 +11,10 @@ export default function ChatItem({chat}) {
             <img src={chat.user.profileImage} alt=""/>
             <div>
                 <h4>{chat.user.username}</h4>
-                <span>{new Date(chat.message.sendedAt).toString().substr(16, 5)}</span>
-                {chat.message.sender !== auth._id && chat.message.read === false ?
-                <b>{chat.message.text}</b> : <p>{chat.message.text}</p>}
+                <span className={styles.time}>{new Date(chat.lastMessage.sendedAt).toString().substr(16, 5)}</span>
+                {chat.lastMessage.sender !== auth._id && chat.lastMessage.read === false ?
+                <b>{chat.lastMessage.text}</b> : <p>{chat.lastMessage.text}</p>}
+                {chat.newMessage > 0 && <span className={styles.new}>{chat.newMessage}</span>}
             </div>
         </div>
     )

@@ -17,6 +17,7 @@ export default function Chats() {
     const chatsRef = useRef()
 
     useEffect(() => {
+        if (!auth) return
         const socket = io(`${config.apiUrl}/chat`)
         socket.emit('all', auth?._id, res => {
             setChats(res)
@@ -37,7 +38,7 @@ export default function Chats() {
         })
 
         return () => socket.close()
-    }, [auth?._id])
+    }, [auth])
 
     return (
         <>

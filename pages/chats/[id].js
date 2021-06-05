@@ -40,6 +40,7 @@ export default function Chat() {
     }, [messages])
 
     useEffect(() => {
+        if (!auth) return
         const socket = io(`${config.apiUrl}/message`)
         socket.emit('messages', {chat: router.query.id, user: auth?._id}, res => {
             setUser(res.user)
@@ -56,7 +57,7 @@ export default function Chat() {
         })
 
         return () => socket.close()
-    }, [router.query.id, auth?._id])
+    }, [router.query.id, auth])
 
     return (
         <>

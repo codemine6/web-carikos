@@ -18,18 +18,28 @@
     text-overflow: ellipsis;
     margin-right: 2rem;
 }
-.item span {
-    top: 0;
-    right: 0;
-    color: var(--grey);
-    font-size: .8rem;
-    position: absolute;
-}
 .item p, .item b {
     color: var(--grey);
     font-size: .85rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    margin-top: .3rem;
+    margin: .3rem 2.5rem 0 0;
+}
+.time {
+    top: 0;
+    right: 0;
+    color: var(--grey);
+    font-size: .8rem;
+    position: absolute;
+}
+.new {
+    top: 1.5rem;
+    right: 0;
+    color: var(--blue);
+    font-size: .75rem;
+    background: var(--light-blue);
+    border-radius: .5rem;
+    position: absolute;
+    padding: 0 .3rem;
 }

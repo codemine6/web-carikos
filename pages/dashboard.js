@@ -18,6 +18,7 @@ export default function Dashboard() {
     const router = useRouter()
 
     useEffect(() => {
+        if (!auth) return
         const socket = io(`${config.apiUrl}/dashboard`)
         socket.emit('get', auth?._id, res => {
             setData(res)
@@ -25,7 +26,7 @@ export default function Dashboard() {
         })
 
         return () => socket.close()
-    }, [auth?._id])
+    }, [auth])
 
     return (
         <>
