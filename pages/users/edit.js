@@ -18,7 +18,7 @@ export default function Edit({user}) {
     const [profileImage, setProfileImage] = useState(user.profileImage)
     const [username, setUsername] = useState(user.username)
     const [phone, setPhone] = useState(user.phone)
-    const [city, setCity] = useState(user.city)
+    const [city, setCity] = useState(user?.city ?? '')
     const [list, setList] = useState()
     const [error, setError] = useState()
     const [loading, setLoading] = useState(false)
