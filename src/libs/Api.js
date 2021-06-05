@@ -24,7 +24,7 @@ API.interceptors.request.use(config => {
 }, error => Promise.reject(error))
 
 API.interceptors.response.use(response => {
-    if ('token' in response.data.data) {
+    if ('token' in response.data?.data) {
         setCookies(response.data.data.token)
     }
     return response
