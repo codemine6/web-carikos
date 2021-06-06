@@ -49,7 +49,7 @@ export default function LocationForm() {
                 </div>}
             </div>
             <div className={styles.map} onClick={() => router.push('/rooms/set-position')}>
-                {form.location.coords.length &&
+                {form &&
                 <MapContainer center={form.location.coords} zoom={15} zoomControl={false} scrollWheelZoom={false} dragging={false}>
                     <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
                     <Marker position={form.location.coords}/>

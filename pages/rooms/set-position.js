@@ -31,12 +31,12 @@ export default function SetPosition() {
     }
 
     useEffect(() => {
-        fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${form.location.coords[0]}&lon=${form.location.coords[1]}&accept-language=id`)
+        form && fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${form.location.coords[0]}&lon=${form.location.coords[1]}&accept-language=id`)
             .then(res => res.json()).then(data => {
                 setInput(data.display_name)
                 setResults([])
             })
-    }, [form.location.coords])
+    }, [form])
 
     return (
         <>
@@ -56,7 +56,7 @@ export default function SetPosition() {
                     </div>
                 </div>
                 <div className={styles.map}>
-                    {form.location.coords.length &&
+                    {form &&
                     <SetMap
                         center={form.location.coords}
                         setPosition={dispatch}

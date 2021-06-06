@@ -31,7 +31,7 @@ export default function FacilitiesForm() {
     return (
         <div className={styles.facilities}>
             <input type="text" placeholder="Fasilitas.." value={input} onChange={showOption} onFocus={showOption}/>
-            {options.length && <div className={styles.options}>
+            {options.length > 0 && <div className={styles.options}>
                 {options.map((option, i) => (
                     <p key={i} onClick={() => selectOption(option)}>{option.name}</p>
                 ))}

@@ -14,7 +14,7 @@ import RoomForm from 'components/RoomForm/RoomForm'
 export default function Edit() {
     const {form, dispatch} = useFormContext()
     const [error, setError] = useState()
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
     const router = useRouter()
 
     async function editKost() {
@@ -30,13 +30,14 @@ export default function Edit() {
 
     useEffect(() => {
         async function fetchData() {
+            setLoading(true)
             try {
                 const res = await API.get(`/rooms/${router.query.id}`)
                 dispatch({type: 'SET_ALL', payload: res.data.data})
             } catch {} finally{setLoading(false)}
         }
-        fetchData()
-    }, [router.query.id, dispatch])
+        form?.name === '' && fetchData()
+    }, [router.query.id, form, dispatch])
 
     return (
         <>
@@ -45,10 +46,10 @@ export default function Edit() {
             </Head>
             <main>
                 <Navbar/>
-                {form.name && <div className={styles.container}>
+                {form && <div className={styles.container}>
                     <RoomForm/>
                     <p className={styles.error}>{error}</p>
-                    <Button onClick={!loading && editKost}>{loading ? 'Menyimpan..' : 'Edit'}</Button>
+                    <Button onClick={!loading && editKost}>{(form && loading) ? 'Menyimpan..' : 'Edit'}</Button>
                 </div>}
             </main>
             {loading && <Loader/>}
