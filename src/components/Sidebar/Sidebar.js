@@ -4,7 +4,7 @@ import {useAuthContext} from 'contexts/AuthContext'
 import API from 'libs/Api'
 import styles from './Sidebar.module.css'
 
-import {Booking, Chat, ChevronRight, Dashboard, Login, Logout, Register, Settings, Star} from 'libs/Icons'
+import {Booking, ChatFill, ChevronRight, Dashboard, Login, Logout, Register, Settings, Star} from 'libs/Icons'
 import Link from 'next/link'
 
 export default function Sidebar(props) {
@@ -37,7 +37,7 @@ export default function Sidebar(props) {
                 {auth?.type === 'owner' &&
                 <div className={styles.menu}>
                     <Link href="/dashboard"><a><Dashboard/>Dashboard</a></Link>
-                    <Link href="/chats"><a><Chat/>Diskusi</a></Link>
+                    <Link href="/chats"><a><ChatFill/>Diskusi</a></Link>
                     <Link href="/reviews?type=new"><a><Star/>Reviews</a></Link>
                     <Link href="/settings"><a><Settings/>Settings</a></Link>
                     <a onClick={logout}><Logout/>Keluar</a>
@@ -45,7 +45,7 @@ export default function Sidebar(props) {
 
                 {auth?.type === 'customer' &&
                 <div className={styles.menu}>
-                    <Link href="/chats"><a><Chat/>Diskusi</a></Link>
+                    <Link href="/chats"><a><ChatFill/>Diskusi</a></Link>
                     <Link href="/bookings?status=waiting"><a><Booking/>Pesanan</a></Link>
                     <Link href="/rooms/favorites"><a><Star/>Favorites</a></Link>
                     <Link href="/settings"><a><Settings/>Settings</a></Link>
