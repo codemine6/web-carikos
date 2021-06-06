@@ -7,11 +7,11 @@ import styles from './FindMap.module.css'
 import {Home, User} from 'libs/Icons'
 
 const userIcon = new Icon({
-    iconUrl: '/user.svg',
+    iconUrl: '/icons/user.svg',
     iconSize: [30, 30]
 })
 
-function Routing({roomPosition, myPosition, center, setCenter}) {
+function Routing({center, roomPosition, myPosition, setCenter}) {
     const [totalDistance, setTotalDistance] = useState()
     const [totalTime, setTotalTime] = useState()
     const map = useMap()

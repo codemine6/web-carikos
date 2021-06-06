@@ -1,0 +1,7 @@
+.map {
+    width: 100%;
+    max-width: inherit;
+    top: 3.5rem;
+    bottom: 0;
+    position: fixed;
+}

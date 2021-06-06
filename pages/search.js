@@ -39,7 +39,7 @@ export default function Search() {
                 <RoomMenu onChange={changeType}/>
                 <h4>{rooms?.length > 0 && `Ditemukan ${rooms.length}`}</h4>
                 <h4>{rooms?.length === 0 && 'Tidak ditemukan'}</h4>
-                <button className={styles.nearest} onClick={() => router.push('/nearest')}>Kost Disekitarmu..</button>
+                <button className={styles.nearest} onClick={() => router.push('/rooms/nearest')}>Kost Disekitarmu..</button>
                 <div className={styles.list}>
                     {rooms?.map(room => (
                         <RoomCard key={room._id} room={room}/>

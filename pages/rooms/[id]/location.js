@@ -14,7 +14,7 @@ export default function Location() {
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(({coords}) => {
             setMyPosition([coords.latitude, coords.longitude])
-        })
+        }, () => alert('Please enable location for this page!'))
     }, [])
 
     return (

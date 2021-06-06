@@ -11,7 +11,7 @@ export default function Button(props) {
         circle.style.left = e.clientX - e.target.offsetLeft - e.target.clientWidth / 2 + 'px'
         circle.style.top = e.clientY - e.target.offsetTop - e.target.clientWidth / 2 + 'px'
 
-        setTimeout(() => circle.remove(), 600)
+        setTimeout(() => circle.remove(), 1000)
         props.onClick && props.onClick()
     }
 

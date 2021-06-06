@@ -27,7 +27,7 @@ export default function SetPosition() {
     function getMyPosition() {
         navigator.geolocation.getCurrentPosition(({coords}) => {
             dispatch({type: 'SET_COORDS', payload: [coords.latitude, coords.longitude]})
-        })
+        }, () => alert('Please enable location for this page!'))
     }
 
     useEffect(() => {
