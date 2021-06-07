@@ -27,7 +27,7 @@ export default function Nearest() {
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(({coords}) => {
             setMyPosition([coords.latitude, coords.longitude])
-        }, () => alert('Please enable location for this page!'))
+        }, () => console.log('Please enable location for this page!'))
     }, [])
 
     return(
