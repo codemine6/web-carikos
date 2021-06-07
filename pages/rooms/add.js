@@ -36,11 +36,11 @@ export default function Add() {
             </Head>
             <main>
                 <Navbar/>
-                <div className={styles.container}>
+                {form && <div className={styles.container}>
                     <RoomForm error={error}/>
                     <p className={styles.error}>{error}</p>
                     <Button onClick={!loading && addRoom}>{loading ? 'Menyimpan..' : 'Tambah'}</Button>
-                </div>
+                </div>}
             </main>
             {loading && <Loader/>}
         </>

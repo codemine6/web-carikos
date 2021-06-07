@@ -55,4 +55,5 @@
     border-radius: .2rem;
     position: absolute;
     padding: .3rem;
+    cursor: pointer;
 }

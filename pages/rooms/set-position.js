@@ -55,14 +55,13 @@ export default function SetPosition() {
                         ))}
                     </div>
                 </div>
-                <div className={styles.map}>
-                    {form &&
+                {form && <div className={styles.map}>
                     <SetMap
                         center={form.location.coords}
                         setPosition={dispatch}
-                    />}
+                    />
                     <i onClick={getMyPosition}><Gps/></i>
-                </div>
+                </div>}
             </main>
         </>
     )

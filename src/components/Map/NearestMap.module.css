@@ -1,12 +1,12 @@
 .popup {
     margin: .8rem;
 }
-.popup button {
+.popup a {
     color: var(--white);
+    text-decoration: none;
     background: var(--blue);
-    border: none;
     border-radius: .3rem;
-    outline: none;
+    display: inline-block;
     padding: .3rem .5rem;
     margin-top: .8rem;
 }
@@ -16,7 +16,6 @@
 }
 .detail img {
     width: 4rem;
-    height: 3rem;
     margin-right: .8rem;
 }
 .detail h3 {
@@ -31,4 +30,17 @@
     font-family: 'Quicksand';
     white-space: nowrap;
     margin: 0;
+}
+
+.gpsIcon {
+    width: 2.1rem;
+    height: 2.2rem;
+    top: 10rem;
+    left: 1rem;
+    background: var(--white);
+    border: .125rem solid #0004;
+    border-radius: .2rem;
+    position: absolute;
+    padding: .3rem;
+    cursor: pointer;
 }
