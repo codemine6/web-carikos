@@ -1,20 +1,18 @@
 import {useState, useEffect} from 'react'
 import {useRouter} from 'next/router'
 import {useFormContext} from 'contexts/RoomFormContext'
-import useFetch from 'libs/useFetch'
+import {getData} from 'libs/Api'
 import {withOwnerAuth} from 'libs/Route'
 import styles from 'styles/rooms.module.css'
 
 import Head from 'next/head'
 import Navbar from 'components/Navbar/Navbar'
 import Button from 'components/Button/Button'
-import Loader from 'components/Loader/Loader'
 import RoomItem from 'components/RoomItem/RoomItem'
 
-export default function Rooms() {
+export default function Rooms({rooms}) {
     const form = useFormContext()
-    const {data: rooms, isLoading} = useFetch('/rooms')
-    const [results, setResults] = useState([])
+    const [results, setResults] = useState(rooms)
     const router = useRouter()
 
     function onSearch(e) {
@@ -23,9 +21,8 @@ export default function Rooms() {
     }
 
     useEffect(() => {
-        setResults(rooms ?? [])
         form.dispatch({type: 'SET_DEFAULT'})
-    }, [form, rooms])
+    }, [form])
 
     return (
         <>
@@ -47,9 +44,15 @@ export default function Rooms() {
                     {rooms?.length === 0 && <p className={styles.empty}>Belum ada kamar</p>}
                 </div>
             </main>
-            {isLoading && <Loader/>}
         </>
     )
 }
 
-export const getServerSideProps = withOwnerAuth(() => ({props: {}}))
+export const getServerSideProps = withOwnerAuth(async context => {
+    try {
+        const res = await getData('/rooms', context)
+        return {props: {rooms: res.data.data}}
+    } catch {
+        return {notFound: true}
+    }
+})

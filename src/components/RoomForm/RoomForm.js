@@ -22,6 +22,7 @@ export default function RoomForm() {
             <label>Name</label>
             <input type="text" placeholder="Nama kost" value={form.name} onChange={setName}/>
 
+            <label>Foto</label>
             <ImageInput/>
 
             <FacilitiesForm/>

@@ -1,4 +1,3 @@
-import {useState} from 'react'
 import L, {Icon} from 'leaflet'
 import {MapContainer, TileLayer, Marker, Popup, useMap, useMapEvents} from 'react-leaflet'
 import 'leaflet-routing-machine'
@@ -52,15 +51,19 @@ function RoomMarker({room, myPosition}) {
     )
 }
 
-function ChangeView({center}) {
-    console.log(center)
+function ChangeView() {
     const map = useMap()
-    map.flyTo(center, map.getZoom())
-    return null
+
+    function getMyPosition() {
+        navigator.geolocation.getCurrentPosition(({coords}) => {
+            map.flyTo([coords.latitude, coords.longitude], map.getZoom())
+        }, () => alert('Please enable location for this page!'))
+    }
+
+    return <i className={styles.gpsIcon} onClick={getMyPosition}><Gps/></i>
 }
 
 export default function NearestMap({myPosition, rooms}) {
-    const [center, setCenter] = useState([0, 0])
     const userIcon = new Icon({
         iconUrl: '/icons/user.svg',
         iconSize: [30, 30]
@@ -70,13 +73,12 @@ export default function NearestMap({myPosition, rooms}) {
         <>
             <MapContainer center={myPosition} zoom={13} onPopupClose={() => console.log('Open')}>
                 <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
-                <ChangeView center={center}/>
                 <Marker position={myPosition} icon={userIcon}/>
                 {rooms?.map(room => (
                     <RoomMarker key={room._id} room={room} myPosition={myPosition}/>
                 ))}
+                <ChangeView/>
             </MapContainer>
-            <i className={styles.gpsIcon} onClick={() => setCenter(myPosition)}><Gps/></i>
         </>
     )
 }

@@ -5,7 +5,7 @@
     flex-wrap: wrap;
     align-items: center;
     padding: .5rem;
-    margin: 1rem 0;
+    margin: .5rem 0;
 }
 .form input {
     display: none;
