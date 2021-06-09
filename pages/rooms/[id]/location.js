@@ -35,7 +35,8 @@ export default function Location() {
                 </div>}
             </main>
             {alert && <Alert
-                text="Silahkan aktifkan lokasi perangkat!"
+                message="Silahkan aktifkan lokasi perangkat!"
+                navigate={() => router.back()}
                 onClose={() => setAlert(false)}
             />}
         </>

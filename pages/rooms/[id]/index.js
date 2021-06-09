@@ -15,10 +15,10 @@ import RoomAction from 'components/RoomAction/RoomAction'
 import UserSummary from 'components/UserSummary/UserSummary'
 
 export default function RoomsDetail({room}) {
-    const router = useRouter()
     const [loading, setLoading] = useState(false)
     const [showAll, setShowAll] = useState(false)
     const [alert, setAlert] = useState(false)
+    const router = useRouter()
 
     async function startChat() {
         setLoading(true)
@@ -62,8 +62,8 @@ export default function RoomsDetail({room}) {
             </main>
             {loading && <Loader/>}
             {alert && <Alert
-                text="Untuk melanjutkan silahkan login terlebih dahulu"
-                path="/login"
+                message="Untuk melanjutkan silahkan login terlebih dahulu!"
+                navigate={() => router.replace(`/login?from=${router.asPath.substr(1)}`)}
                 onClose={() => setAlert(false)}
             />}
         </>
