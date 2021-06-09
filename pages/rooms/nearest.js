@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react'
+import {useRouter} from 'next/router'
 import dynamic from 'next/dynamic'
 import API from 'libs/Api'
 import styles from 'styles/nearestRooms.module.css'
@@ -6,6 +7,7 @@ import styles from 'styles/nearestRooms.module.css'
 import Head from 'next/head'
 import Navbar from 'components/Navbar/Navbar'
 import Loader from 'components/Loader/Loader'
+import Alert from 'components/Alert/Alert'
 
 const NearestMap = dynamic(() => import('components/Map/NearestMap'), {ssr: false})
 
@@ -13,6 +15,8 @@ export default function Nearest() {
     const [rooms, setRooms] = useState()
     const [myPosition, setMyPosition] = useState()
     const [loading, setLoading] = useState(true)
+    const [alert, setAlert] = useState(false)
+    const router = useRouter()
 
     useEffect(() => {
         async function fetchData() {
@@ -27,7 +31,7 @@ export default function Nearest() {
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(({coords}) => {
             setMyPosition([coords.latitude, coords.longitude])
-        }, () => console.log('Please enable location for this page!'))
+        }, () => setAlert(true))
     }, [])
 
     return(
@@ -42,6 +46,11 @@ export default function Nearest() {
                 </div>}
             </main>
             {loading && <Loader/>}
+            {alert && <Alert
+                message='Silahkan aktifkan lokasi perangkat!'
+                navigate={router.back}
+                onClose={() => setAlert(false)}
+            />}
         </>
     )
 }

@@ -62,7 +62,7 @@ export default function RoomsDetail({room}) {
             </main>
             {loading && <Loader/>}
             {alert && <Alert
-                message="Untuk melanjutkan silahkan login terlebih dahulu!"
+                message='Untuk melanjutkan silahkan login terlebih dahulu!'
                 navigate={() => router.replace(`/login?from=${router.asPath.substr(1)}`)}
                 onClose={() => setAlert(false)}
             />}

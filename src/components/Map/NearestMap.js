@@ -57,7 +57,7 @@ function ChangeView() {
     function getMyPosition() {
         navigator.geolocation.getCurrentPosition(({coords}) => {
             map.flyTo([coords.latitude, coords.longitude], map.getZoom())
-        }, () => console.log('Please enable location for this page!'))
+        })
     }
 
     return <i className={styles.gpsIcon} onClick={getMyPosition}><Gps/></i>

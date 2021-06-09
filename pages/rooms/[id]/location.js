@@ -16,9 +16,7 @@ export default function Location() {
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(({coords}) => {
             setMyPosition([coords.latitude, coords.longitude])
-        }, () => {
-            setAlert(true)
-        })
+        }, () => setAlert(true))
     }, [])
 
     return (
@@ -35,8 +33,8 @@ export default function Location() {
                 </div>}
             </main>
             {alert && <Alert
-                message="Silahkan aktifkan lokasi perangkat!"
-                navigate={() => router.back()}
+                message='Silahkan aktifkan lokasi perangkat!'
+                navigate={router.back}
                 onClose={() => setAlert(false)}
             />}
         </>

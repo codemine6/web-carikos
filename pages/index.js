@@ -1,6 +1,7 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import {useRouter} from 'next/router'
 import {useAuthContext} from 'contexts/AuthContext'
+import API from 'libs/Api'
 import useFetch from 'libs/useFetch'
 import styles from 'styles/home.module.css'
 
@@ -23,19 +24,22 @@ export default function Home() {
     const {auth} = useAuthContext()
     const {data: promo} = useFetch('/promos')
     const {data: popular, isLoading} = useFetch('/rooms/popular')
+    const [cityRooms, setCityRooms] = useState()
+    const [type, setType] = useState()
     const [city, setCity] = useState('Bandung')
-    const [around, setAround] = useState()
     const [citiesOpen, setCitiesOpen] = useState(false)
     const router = useRouter()
 
-    function changeCity(e) {
-        setCity(e)
-        setAround(popular.filter(room => room.location.city === e))
-    }
-
-    function changeType(type) {
-        console.log(type)
-    }
+    useEffect(() => {
+        async function fetchData() {
+            setCityRooms()
+            try {
+                const res = await API.get(`/rooms/city/${city}`)
+                setCityRooms(res.data.data)
+            } catch {}
+        }
+        fetchData()
+    }, [city])
 
     return (
         <>
@@ -53,7 +57,7 @@ export default function Home() {
                 </div>
 
                 <div onClick={() => router.push('/search')}><SearchForm/></div>
-                <RoomMenu onChange={changeType}/>
+                <RoomMenu onChange={setType}/>
 
                 {(auth === null || auth?.type === 'owner') &&
                 <div className={styles.add}>
@@ -79,15 +83,15 @@ export default function Home() {
 
                         {citiesOpen && <div className={styles.cityList}>
                             {cities.map((city, i) => (
-                                <p key={i} onClick={() => changeCity(city)}>{city}</p>
+                                <p key={i} onClick={() => setCity(city)}>{city}</p>
                             ))}
                         </div>}
                     </div>
                 </div>
 
-                {around?.length === 0 && <p className={styles.empty}>Upps, sepertinya belum ada kost di daerah ini.</p>}
-                <div className={styles.list} id={!popular ? 'shimmer' : undefined}>
-                    {popular ? popular.reverse().map(room => (
+                {cityRooms?.length === 0 && <p className={styles.empty}>Upps, sepertinya belum ada kost di daerah ini.</p>}
+                <div className={styles.list} id={!cityRooms ? 'shimmer' : undefined}>
+                    {cityRooms ? cityRooms.map(room => (
                         <RoomCard key={room._id} room={room}/>
                     )) : <><RoomSkeleton/><RoomSkeleton/></>}
                 </div>

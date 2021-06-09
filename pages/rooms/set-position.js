@@ -5,6 +5,7 @@ import styles from 'styles/setPosition.module.css'
 
 import {Gps} from 'libs/Icons'
 import Head from 'next/head'
+import Alert from 'components/Alert/Alert'
 
 const SetMap = dynamic(() => import('components/Map/SetMap'), {ssr: false})
 
@@ -12,6 +13,7 @@ export default function SetPosition() {
     const {form, dispatch} = useFormContext()
     const [input, setInput] = useState('')
     const [results, setResults] = useState([])
+    const [alert, setAlert] = useState(false)
 
     function selectResult(e) {
         setResults([])
@@ -27,7 +29,7 @@ export default function SetPosition() {
     function getMyPosition() {
         navigator.geolocation.getCurrentPosition(({coords}) => {
             dispatch({type: 'SET_COORDS', payload: [coords.latitude, coords.longitude]})
-        }, () => console.log('Please enable location for this page!'))
+        }, () => setAlert(true))
     }
 
     useEffect(() => {
@@ -63,6 +65,10 @@ export default function SetPosition() {
                     <i onClick={getMyPosition}><Gps/></i>
                 </div>}
             </main>
+            {alert && <Alert
+                message='Silahkan aktifkan lokasi perangkat!'
+                onClose={() => setAlert(false)}
+            />}
         </>
     )
 }
