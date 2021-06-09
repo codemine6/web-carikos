@@ -7,7 +7,11 @@ export default function Alert({text, path, onClose}) {
     const router = useRouter()
 
     function confirm() {
-        router.push({pathname: path, query: {from: router.asPath.substr(1)}})
+        if (path) {
+            router.push({pathname: path, query: {from: router.asPath.substr(1)}})
+        } else {
+            onClose()
+        }
     }
 
     return (

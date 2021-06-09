@@ -4,17 +4,21 @@ import dynamic from 'next/dynamic'
 import styles from 'styles/roomLocation.module.css'
 
 import Head from 'next/head'
+import Alert from 'components/Alert/Alert'
 
 const FindMap = dynamic(() => import('components/Map/FindMap'), {ssr: false})
 
 export default function Location() {
     const [myPosition, setMyPosition] = useState()
+    const [alert, setAlert] = useState(false)
     const router = useRouter()
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(({coords}) => {
             setMyPosition([coords.latitude, coords.longitude])
-        }, () => console.log('Please enable location for this page!'))
+        }, () => {
+            setAlert(true)
+        })
     }, [])
 
     return (
@@ -23,13 +27,17 @@ export default function Location() {
                 <title>Lokasi</title>
             </Head>
             <main>
-                <div className={styles.map}>
+                {myPosition && <div className={styles.map}>
                     <FindMap
                         roomPosition={[router.query.latitude, router.query.longitude]}
                         myPosition={myPosition}
                     />
-                </div>
+                </div>}
             </main>
+            {alert && <Alert
+                text="Silahkan aktifkan lokasi perangkat!"
+                onClose={() => setAlert(false)}
+            />}
         </>
     )
 }
