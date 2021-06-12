@@ -2,12 +2,9 @@ import nookies from 'nookies'
 
 function getAuth(context) {
     const {access} = nookies.get(context)
-    if (!access) return null
-    const token = access.split('.')[1]
-    if (!token) return null
-    const data = JSON.parse(Buffer.from(token, 'base64').toString())
-    if (!('type' in data)) return null
-    return data
+    const token = access?.split('.')[1]
+    const data = token && JSON.parse(Buffer.from(token, 'base64').toString())
+    return (data && ('type' in data)) ? data : null
 }
 
 export function withAuth(gssp) {

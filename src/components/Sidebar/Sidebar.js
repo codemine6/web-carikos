@@ -1,5 +1,6 @@
-import {useEffect} from 'react'
+import {useState, useEffect} from 'react'
 import {useRouter} from 'next/router'
+import nookies from 'nookies'
 import {useAuthContext} from 'contexts/AuthContext'
 import API from 'libs/Api'
 import styles from './Sidebar.module.css'
@@ -9,6 +10,7 @@ import Link from 'next/link'
 
 export default function Sidebar(props) {
     const {auth, dispatch} = useAuthContext()
+    const [user, setUser] = useState()
     const router = useRouter()
 
     async function logout() {
@@ -20,6 +22,11 @@ export default function Sidebar(props) {
     }
 
     useEffect(() => {
+        const {access} = nookies.get()
+        const token = access?.split('.')[1]
+        const data = token && JSON.parse(Buffer.from(token, 'base64').toString())
+        setUser(data)
+
         document.body.style.overflow = 'hidden'
         return () => document.body.removeAttribute('style')
     }, [])
@@ -28,13 +35,13 @@ export default function Sidebar(props) {
         <>
             <div className={styles.overlay} onClick={() => props.onClose()}/>
             <div className={styles.sidebar}>
-                {auth &&
+                {(auth || user) &&
                 <div className={styles.profile}>
-                    <img src={auth.profileImage} alt="" onClick={() => router.push('/profile')}/>
-                    <h3>{auth.username}</h3>
+                    <img src={auth?.profileImage ?? user?.profileImage} alt="" onClick={() => router.push('/profile')}/>
+                    <h3>{auth?.username ?? user?.username}</h3>
                 </div>}
 
-                {auth?.type === 'owner' &&
+                {(auth?.type || user?.type) === 'owner' &&
                 <div className={styles.menu}>
                     <Link href="/dashboard"><a><Dashboard/>Dashboard</a></Link>
                     <Link href="/chats"><a><ChatFill/>Diskusi</a></Link>
@@ -43,7 +50,7 @@ export default function Sidebar(props) {
                     <a onClick={logout}><Logout/>Keluar</a>
                 </div>}
 
-                {auth?.type === 'customer' &&
+                {(auth?.type || user?.type) === 'customer' &&
                 <div className={styles.menu}>
                     <Link href="/chats"><a><ChatFill/>Diskusi</a></Link>
                     <Link href="/bookings?status=waiting"><a><Booking/>Pesanan</a></Link>
@@ -52,7 +59,7 @@ export default function Sidebar(props) {
                     <a onClick={logout}><Logout/>Keluar</a>
                 </div>}
 
-                {!auth &&
+                {(!auth && !user) &&
                 <div className={styles.menu}>
                     <Link href="/login"><a><Login/>Masuk</a></Link>
                     <Link href="/register"><a><Register/>Daftar</a></Link>

@@ -3,6 +3,7 @@ importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.1.5/workbox
 self.skipWaiting()
 const revision = Date.now().toString().substr(11)
 const apiRoutes = [
+    '/rooms/city',
     '/rooms/popular',
     '/promos'
 ]
@@ -23,7 +24,7 @@ workbox.precaching.precacheAndRoute([
 ])
 
 workbox.routing.registerRoute(
-    ({url}) => apiRoutes.some(path => path === url.pathname),
+    ({url}) => apiRoutes.some(path => url.pathname.includes(path)),
     new workbox.strategies.StaleWhileRevalidate({
         cacheName: 'api-data',
         plugins: [
