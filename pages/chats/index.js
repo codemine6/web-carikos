@@ -24,7 +24,7 @@ export default function Chats(props) {
         socket.on('new_chat', data => {
             if (chatsRef.current.some(chat => chat._id === data._id)) {
                 const list = chatsRef.current.map(chat => chat._id === data._id ? {...chat, ...data} : chat)
-                list.sort((a, b) => new Date(b.message.sendedAt) - new Date(a.message.sendedAt))
+                list.sort((a, b) => new Date(b.lastMessage.sendedAt) - new Date(a.lastMessage.sendedAt))
                 setChats(list)
                 chatsRef.current = list
             } else {
