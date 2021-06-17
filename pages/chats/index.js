@@ -49,7 +49,7 @@ export default function Chats(props) {
                         <ChatItem chat={chat} key={chat._id}/>
                     ))}
                 </div>
-                {chats && chats.length === 0 && <p className={styles.empty}>Belum ada percakapan</p>}
+                {chats.length === 0 && <p className={styles.empty}>Belum ada percakapan</p>}
             </main>
         </>
     )
