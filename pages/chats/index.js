@@ -1,29 +1,26 @@
 import {useState, useRef, useEffect} from 'react'
 import {io} from 'socket.io-client'
 import {useAuthContext} from 'contexts/AuthContext'
+import {getData} from 'libs/Api'
 import {withAuth} from 'libs/Route'
 import config from 'libs/config'
 import styles from 'styles/chats.module.css'
 
 import Head from 'next/head'
 import Navbar from 'components/Navbar/Navbar'
-import Loader from 'components/Loader/Loader'
 import ChatItem from 'components/ChatItem/ChatItem'
 
-export default function Chats() {
+export default function Chats(props) {
     const {auth} = useAuthContext()
-    const [chats, setChats] = useState()
-    const [loading, setLoading] = useState(true)
+    const [chats, setChats] = useState(props.chats)
     const chatsRef = useRef()
 
     useEffect(() => {
         if (!auth) return
+        chatsRef.current = chats
+
         const socket = io(`${config.apiUrl}/chat`)
-        socket.emit('all', auth?._id, res => {
-            setChats(res)
-            chatsRef.current = res
-            setLoading(false)
-        })
+        socket.emit('all', auth?._id)
         socket.on('new_chat', data => {
             if (chatsRef.current.some(chat => chat._id === data._id)) {
                 const list = chatsRef.current.map(chat => chat._id === data._id ? {...chat, ...data} : chat)
@@ -54,9 +51,15 @@ export default function Chats() {
                 </div>
                 {chats && chats.length === 0 && <p className={styles.empty}>Belum ada percakapan</p>}
             </main>
-            {loading && <Loader/>}
         </>
     )
 }
 
-export const getServerSideProps = withAuth(() => ({props: {}}))
+export const getServerSideProps = withAuth(async context => {
+    try {
+        const res = await getData('/chats', context)
+        return {props: {chats: res.data.data}}
+    } catch {
+        return {notFound: true}
+    }
+})

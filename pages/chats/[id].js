@@ -2,7 +2,7 @@ import {useState, useEffect, useRef} from 'react'
 import {useRouter} from 'next/router'
 import {io} from 'socket.io-client'
 import {useAuthContext} from 'contexts/AuthContext'
-import API from 'libs/Api'
+import API, {getData} from 'libs/Api'
 import Time from 'libs/Time'
 import {withAuth} from 'libs/Route'
 import config from 'libs/config'
@@ -10,22 +10,24 @@ import styles from 'styles/chatDetail.module.css'
 
 import Head from 'next/head'
 import NavbarChat from 'components/NavbarChat/NavbarChat'
-import Loader from 'components/Loader/Loader'
 import MessageForm from 'components/MessageForm/MessageForm'
 import MessageItem from 'components/MessageItem/MessageItem'
 
-export default function Chat() {
+export default function Chat({user, ...props}) {
     const {auth} = useAuthContext()
-    const [user, setUser] = useState()
-    const [messages, setMessages] = useState([])
-    const [loading, setLoading] = useState(true)
+    const [messages, setMessages] = useState(props.messages)
     const messagesRef = useRef(messages)
     const listRef = useRef()
     const router = useRouter()
     let date
 
     async function newMessage(data) {
-        const message = {...data, chat: router.query.id, receiver: user._id, sender: auth._id}
+        const message = {
+            ...data,
+            chat: router.query.id,
+            receiver: user._id,
+            sender: auth._id
+        }
         setMessages([...messagesRef.current, message])
         try {
             const res = await API.post('/messages', message)
@@ -42,11 +44,7 @@ export default function Chat() {
     useEffect(() => {
         if (!auth) return
         const socket = io(`${config.apiUrl}/message`)
-        socket.emit('messages', {chat: router.query.id, user: auth?._id}, res => {
-            setUser(res.user)
-            setMessages(res.messages)
-            setLoading(false)
-        })
+        socket.emit('messages', {chat: router.query.id, user: auth?._id})
         socket.on('new_message', message => {
             socket.emit('read', message._id)
             setMessages([...messagesRef.current, message])
@@ -80,11 +78,20 @@ export default function Chat() {
                         return <MessageItem message={message} key={i}/>
                     })}
                 </div>
-                <MessageForm newMessage={newMessage} loading={loading}/>
+                <MessageForm newMessage={newMessage}/>
             </main>
-            {loading && <Loader/>}
         </>
     )
 }
 
-export const getServerSideProps = withAuth(() => ({props: {}}))
+export const getServerSideProps = withAuth(async context => {
+    try {
+        const res = await getData(`/chats/${context.query.id}`, context)
+        return {props: {
+            user: res.data.data.user,
+            messages: res.data.data.messages
+        }}
+    } catch {
+        return {notFound: true}
+    }
+})

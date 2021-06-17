@@ -3,7 +3,7 @@ import styles from './MessageForm.module.css'
 
 import {Send} from 'libs/Icons'
 
-export default function MessageForm({newMessage, loading}) {
+export default function MessageForm({newMessage}) {
     const [text, setText] = useState('')
     const inputRef = useRef()
 
@@ -14,7 +14,6 @@ export default function MessageForm({newMessage, loading}) {
     }
 
     async function sendMessage() {
-        if (loading) return
         const data = {
             images: [],
             room: null,

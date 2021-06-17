@@ -8,11 +8,12 @@ import NavbarDetail from 'components/NavbarDetail/NavbarDetail'
 import Loader from 'components/Loader/Loader'
 import Alert from 'components/Alert/Alert'
 import Carousel from 'components/Carousel/Carousel'
-import RoomDetailMain from 'components/RoomDetailMain/RoomDetailMain'
-import RoomDetailReview from 'components/RoomDetailReview/RoomDetailReview'
 import RoomFacilities from 'components/RoomFacilities/RoomFacilities'
 import RoomAction from 'components/RoomAction/RoomAction'
 import UserSummary from 'components/UserSummary/UserSummary'
+
+import RoomDetailMain from 'layout/RoomDetailMain/RoomDetailMain'
+import RoomDetailReview from 'layout/RoomDetailReview/RoomDetailReview'
 
 export default function RoomsDetail({room}) {
     const [loading, setLoading] = useState(false)
