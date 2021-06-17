@@ -65,7 +65,7 @@ export default function Chat({user, ...props}) {
             <main>
                 <NavbarChat user={user} reset={() => setMessages([])}/>
                 <div className={styles.list} ref={listRef}>
-                    {messages?.map((message, i) => {
+                    {auth && messages?.map((message, i) => {
                         if (message.sendedAt && date !== new Date(message.sendedAt).toString().substr(8,2)) {
                             date = new Date(message.sendedAt).toString().substr(8,2)
                             return (

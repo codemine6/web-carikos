@@ -8,7 +8,7 @@ export default function MessageItem({message}) {
 
     return (
         <>
-            {auth?._id === message.sender ?
+            {auth._id === message.sender ?
             <div className={styles.myMessage}>
                 <p>{message.text}</p>
                 <div>

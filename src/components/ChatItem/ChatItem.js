@@ -12,7 +12,7 @@ export default function ChatItem({chat}) {
             <div>
                 <h4>{chat.user.username}</h4>
                 <span className={styles.time}>{new Date(chat.lastMessage.sendedAt).toString().substr(16, 5)}</span>
-                {chat.lastMessage.sender !== auth?._id && chat.lastMessage.read === false ?
+                {chat.lastMessage.sender !== auth._id && chat.lastMessage.read === false ?
                 <b>{chat.lastMessage.text}</b> : <p>{chat.lastMessage.text}</p>}
                 {chat.newMessage > 1 && <span className={styles.new}>{chat.newMessage}</span>}
             </div>

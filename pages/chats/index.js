@@ -45,7 +45,7 @@ export default function Chats(props) {
             <main>
                 <Navbar/>
                 <div className={styles.list}>
-                    {chats?.map(chat => (
+                    {auth && chats?.map(chat => (
                         <ChatItem chat={chat} key={chat._id}/>
                     ))}
                 </div>
